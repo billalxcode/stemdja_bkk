@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use CodeIgniter\Router\RouteCollection;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -38,6 +40,10 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'AuthController::index');
 $routes->post('/verify', 'AuthController::verify');
+
+$routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection $routes) {
+    $routes->get('', 'Admin\DashboardController::dashboard');
+});
 
 /*
  * --------------------------------------------------------------------
