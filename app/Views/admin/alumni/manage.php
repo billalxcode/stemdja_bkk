@@ -42,5 +42,38 @@
 
 <?= $this->section('script'); ?>
 <script src="<?= base_url() ?>/assets/vendor/libs/DataTables/datatables.min.js"></script>
-<script src="<?= base_url() ?>/assets/js/dashboards-analytics.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log(BASE_URL + '/admin/alumni/getall')
+        $("#table").DataTable({
+            responsive: true,
+            ajax: {
+                url: BASE_URL + '/admin/alumni/getall',
+                method: 'post'
+            },
+            columns: [
+                {
+                    'data': 'name'
+                },
+                {
+                    'data': 'jurusan.name'
+                },
+                {
+                    'data': 'tahun_lulus'
+                },
+                {
+                    'data': 'alamat'
+                },
+                {
+                    'data': 'status'
+                },
+                {
+                    'render': function () {
+                        return "Oke"
+                    }
+                }
+            ]
+        })
+    })
+</script>
 <?= $this->endSection(); ?>

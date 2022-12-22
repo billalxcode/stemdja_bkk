@@ -47,6 +47,8 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
     $routes->group('alumni', function (RouteCollection $routes) {
         $routes->get('', 'Admin\AlumniController::manage');
         $routes->get('create', 'Admin\AlumniController::create');
+        $routes->post("save", 'Admin\AlumniController::save');
+        $routes->post("getall", "Admin\AlumniController:getAll");
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {

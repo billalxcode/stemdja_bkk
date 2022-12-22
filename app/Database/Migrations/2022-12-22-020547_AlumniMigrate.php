@@ -15,6 +15,11 @@ class AlumniMigrate extends Migration
                 'auto_increment' => true,
                 'null' => false
             ],
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'null' => false,
+            ],
             'jenis_kelamin' => [
                 'type' => 'ENUM("male","female")'
             ],

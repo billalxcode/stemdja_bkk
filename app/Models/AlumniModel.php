@@ -15,8 +15,8 @@ class AlumniModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'jenis_kelamin', 'jurusan_id', 'tahun_lulus', 'alamat', 
-        'status', 'kontak', 'tempat_kerja'
+        'user_id', 'jenis_kelamin', 'jurusan_id', 'tahun_lulus', 
+        'alamat', 'status', 'kontak', 'tempat_kerja'
     ];
 
     // Dates
@@ -43,4 +43,23 @@ class AlumniModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function getAllData() {
+        $userModel = new \App\Models\UsersModel();
+        $jurusanModel = new \App\Models\JurusanModel();
+
+        $alumnidata = $this->findAll();
+        $alumnidata_rev = [];
+        foreach ($alumnidata as $data) {
+            $id = $data['id'];
+            $userdata = $userModel->select('name,username,email')->where('id', $id)->first();
+            $jurusandata = $jurusanModel->select('name')->where('id', $data['jurusan_id'])->first();
+            $data['jurusan'] = $jurusandata;
+            foreach ($userdata as $key => $val) {
+                $data[$key] = $val;
+            }
+            array_push($alumnidata_rev, $data);
+        }
+
+        return $alumnidata_rev;
+    }
 }
