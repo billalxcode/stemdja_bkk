@@ -54,4 +54,8 @@ abstract class BaseController extends Controller
     public function render($name) {
         return view($name, $this->context);
     }
+
+    public function renderContext() {
+        return $this->response->setJSON($this->context)->setStatusCode(200);
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class UsersMigrate extends Migration
+class AlumniMigrate extends Migration
 {
     public function up()
     {
@@ -13,39 +13,37 @@ class UsersMigrate extends Migration
                 'type' => 'INT',
                 'constraint' => 5,
                 'auto_increment' => true,
-                'unsigned' => true,
                 'null' => false
             ],
-            'name' => [
+            'jenis_kelamin' => [
+                'type' => 'ENUM("male","female")'
+            ],
+            'jurusan_id' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'null' => false,
+            ],
+            'tahun_lulus' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 4,
                 'null' => false
             ],
-            'username' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+            'alamat' => [
+                'type' => 'TEXT',
                 'null' => false
-            ],
-            'email' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => false
-            ],
-            'password' => [
-                'type' => 'TEXT'
-            ],
+            ], 
             'status' => [
-                'type' => 'ENUM("verifed","unverived")',
+                'type' => 'ENUM("belum_bekerja","bekerja","kuliah","berwirausaha")'
+            ],
+            'kontak' => [
+                'type' => 'VARCHAR',
+                'constraint' => 25,
                 'null' => false
             ],
-            'role' => [
-                'type' => 'ENUM("admin","alumni")',
-                'null' => false
-            ],
-            'remember_token' => [
+            'tempat_kerja' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null' => false
+                'null' => true
             ],
             'created_at' => [
                 'type' => 'DATETIME'
@@ -59,13 +57,11 @@ class UsersMigrate extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey('username');
-        $this->forge->addUniqueKey('email');
-        $this->forge->createTable('users', true);
+        $this->forge->createTable('alumni', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('users', true);
+        $this->forge->dropTable('alumni', true);
     }
 }

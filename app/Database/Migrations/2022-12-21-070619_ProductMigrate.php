@@ -37,7 +37,7 @@ class ProductMigrate extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('products');
+        // $this->forge->createTable('products');
     }
 
     public function down()

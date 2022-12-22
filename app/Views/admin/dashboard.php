@@ -456,3 +456,7 @@
     </div>
 </div>
 <?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+<script src="<?= base_url() ?>/assets/js/dashboards-analytics.js"></script>
+<?= $this->endSection(); ?>

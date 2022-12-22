@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class JurusanModel extends Model
+class AlumniModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jurusans';
+    protected $table            = 'alumni';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,7 +15,8 @@ class JurusanModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name', 'short'
+        'jenis_kelamin', 'jurusan_id', 'tahun_lulus', 'alamat', 
+        'status', 'kontak', 'tempat_kerja'
     ];
 
     // Dates
@@ -41,4 +42,5 @@ class JurusanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
 }

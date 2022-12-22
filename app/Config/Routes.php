@@ -43,6 +43,17 @@ $routes->post('/verify', 'AuthController::verify');
 
 $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection $routes) {
     $routes->get('', 'Admin\DashboardController::dashboard');
+
+    $routes->group('alumni', function (RouteCollection $routes) {
+        $routes->get('', 'Admin\AlumniController::manage');
+        $routes->get('create', 'Admin\AlumniController::create');
+    });
+
+    $routes->group('jurusan', function (RouteCollection $routes) {
+        $routes->get('', 'Admin\JurusanController::manage');
+        $routes->post('save', 'Admin\JurusanController::save');
+        $routes->post('getall', 'Admin\JurusanController::getAll');
+    });
 });
 
 /*
