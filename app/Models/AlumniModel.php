@@ -62,4 +62,22 @@ class AlumniModel extends Model
 
         return $alumnidata_rev;
     }
+
+    public function trashData($data_id) {
+        $userModel = new \App\Models\UsersModel();
+
+        $data = $this->select('id,user_id')->where('id', $data_id)->first();
+        if ($data) {
+            $userData = $userModel->select('id')->where('id', $data['user_id'])->first();
+            if ($userData) {
+                $userModel->delete($userData['id']);
+                $this->delete($data['id']);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

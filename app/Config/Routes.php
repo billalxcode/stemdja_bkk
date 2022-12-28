@@ -47,14 +47,27 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
     $routes->group('alumni', function (RouteCollection $routes) {
         $routes->get('', 'Admin\AlumniController::manage');
         $routes->get('create', 'Admin\AlumniController::create');
+        $routes->get("store", 'Admin\AlumniController::store');
         $routes->post("save", 'Admin\AlumniController::save');
-        $routes->post("getall", "Admin\AlumniController:getAll");
+        $routes->post("getall", "Admin\AlumniController::getdata");
+        $routes->post('trash', 'Admin\AlumniController::trash');
+        $routes->post("store", 'Admin\AlumniController::process_store');
+        $routes->post("download", "Admin\AlumniController::download");
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {
         $routes->get('', 'Admin\JurusanController::manage');
         $routes->post('save', 'Admin\JurusanController::save');
         $routes->post('getall', 'Admin\JurusanController::getAll');
+    });
+
+    $routes->group('loker', function (RouteCollection $routes) {
+        $routes->get('', 'Admin\LokerController::manage');
+        $routes->get('create', 'Admin\LokerController::create');
+        $routes->get('store', 'Admin\LokerController::store');
+        $routes->post("save", "Admin\LokerController::save");
+        $routes->post('getall', 'Admin\LokerController::getAll');
+        $routes->post("store", 'Admin\LokerController::process_store');
     });
 });
 

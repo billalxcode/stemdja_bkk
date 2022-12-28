@@ -7,14 +7,16 @@ use CodeIgniter\Model;
 class LowonganModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'lowongans';
+    protected $table            = 'info_lowongans';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'title', 'corporate_name', 'corporate_contact', 'expired_date', 'kualifikasi'
+    ];
 
     // Dates
     protected $useTimestamps = true;
@@ -39,4 +41,20 @@ class LowonganModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function create_data($title, $corporate_name, $corporate_contact, $expired_date, $kualifikasi) {
+        return [
+            'title' => $title,
+            'corporate_name' => $corporate_name,
+            'corporate_contact' => $corporate_contact,
+            'expired_date' => $expired_date,
+            'kualifikasi' => $kualifikasi
+        ];
+    }
+
+    public function get_all_data() {
+        $data = $this->select('id,title,corporate_name,corporate_contact,expired_date,kualifikasi,created_at')->findAll();
+
+        return $data;
+    }
 }
