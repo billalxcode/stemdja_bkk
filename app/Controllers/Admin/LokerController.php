@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use Config\Services;
 use Exception;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class LokerController extends BaseController
 {
@@ -93,6 +94,57 @@ class LokerController extends BaseController
                 $this->session->setFlashdata('success', 'Data berhasil di import, sukses ' . $success . ', error ' . $error);
                 return redirect()->back();
             }
+        }
+    }
+
+    public function download() {
+        $fileformat = $this->request->getPost('fileformat');
+
+        $alphabets = [
+            'A' => 'Judul',
+            'B' => 'Kualifikasi',
+            'C' => 'Nama Perusahaan',
+            'D' => 'Kontak Perusahaan',
+            'E' => 'Tanggal Akhir'
+        ];
+
+        // Initialize spreadsheet
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->setActiveSheetIndex(0);
+        foreach ($alphabets as $alpha => $val) {
+            $sheet->getColumnDimension($alpha)->setAutoSize(true);
+            $sheet->setCellValue($alpha . '1', $val);
+        }
+
+        $sheet->getStyle('A1:E1')->getFont()->setBold(true);
+
+        $properties = $spreadsheet->getProperties();
+        $properties->setCreator('Billal Fauzan');
+        $properties->setLastModifiedBy('Billal Fauzan');
+        $properties->setTitle('Official exported lowongan pekerjaan');
+        
+        $row = 1;
+        $lokerData = $this->lokerModel->select('title,kualifikasi,corporate_name,corporate_contact,expired_date')->findAll();
+        foreach ($lokerData as $loker) {
+            $row++;
+            $sheet->setCellValue('A' . $row, $loker['title']);
+            $sheet->setCellValue('B' . $row, $loker['kualifikasi']);
+            $sheet->setCellValue('C' . $row, $loker['corporate_name']);
+            $sheet->setCellValue('D' . $row, $loker['corporate_contact']);
+            $sheet->setCellValue('E' . $row, $loker['expired_date']);
+        }
+
+        ob_end_clean();
+
+        if ($fileformat == "csv") {
+
+        } else if ($fileformat == "xlsx") {
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Cache-Control: max-age=0');
+            header('Content-Disposition: attachment;filename=Data Alumni.xlsx');
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+            $writer->save('php://output');
+            exit();
         }
     }
 }

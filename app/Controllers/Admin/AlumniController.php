@@ -232,7 +232,6 @@ class AlumniController extends BaseController
         $properties->setTitle('Official exported data alumni');
         $properties->setSubject('Official exported data alumni');
     
-        
         // Get all data from database and write to sheet
         $row = 1;
         $alumniData = $this->alumniModel->findAll();

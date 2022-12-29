@@ -68,6 +68,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post("save", "Admin\LokerController::save");
         $routes->post('getall', 'Admin\LokerController::getAll');
         $routes->post("store", 'Admin\LokerController::process_store');
+        $routes->post("download", 'Admin\LokerController::download');
     });
 });
 
