@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AdminFilter implements FilterInterface
+class AlumniFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -28,7 +28,7 @@ class AdminFilter implements FilterInterface
         $userModel = new \App\models\UsersModel();
         $token = session()->get("token");
 
-        $userdata = $userModel->select('name')->where(['remember_token' => $token, 'role' => 'admin'])->first();
+        $userdata = $userModel->select('name')->where(['remember_token' => $token, 'role' => 'alumni'])->first();
 
         if (!$userdata) {
             session()->setFlashdata('error', 'Maaf anda belum login');

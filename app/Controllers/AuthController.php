@@ -31,7 +31,7 @@ class AuthController extends BaseController
         $userdata = $this->userModel->where('username', $username)->first();
         if ($userdata) {
             if (password_verify($passowrd, $userdata['password'])) {
-                if ($userdata['role'] == 'siswa' || $userdata['role'] == 'alumni') {
+                if ($userdata['role'] == 'alumni') {
                     if ($userdata['status'] == 'verifed') {
                         $token = $this->userModel->create_token();
                         $this->userModel->update($userdata['id'], ['remember_token' => $token]);
@@ -39,7 +39,7 @@ class AuthController extends BaseController
                         
                         // Send message to view
                         $this->session->setFlashdata('success', 'Anda berhasil login, selamat datang kembali <b>' . $userdata['name'] . '</b>, anda login sebagai ' . $userdata['role']);
-                        return redirect()->to('/');
+                        return redirect()->to('/alumni');
                     } else {
                         $this->session->setFlashdata('error', 'Akun belum diverifikasi, mohon hubungi pihak sekolah.');
                         return redirect()->back()->withInput();

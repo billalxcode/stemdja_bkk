@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\AdminFilter;
+use App\Filters\AlumniFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,7 +25,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'adminfilter'   => AdminFilter::class
+        'adminfilter'   => AdminFilter::class,
+        'alumnifilter'  => AlumniFilter::class
     ];
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Faker\Factory;
 
 class UsersSeeder extends Seeder
 {
@@ -19,17 +20,19 @@ class UsersSeeder extends Seeder
             'role' => 'admin',
             'status' => 'verifed'
         ]);
+        
+        $factory = Factory::create('id_ID');
+        for ($i = 0; $i < 100; $i++) {
+            $data = [
+                'name' => $factory->name(),
+                'username' => $factory->userName(),
+                'email' => $factory->email(),
+                'password' => password_hash('alumni2022', PASSWORD_BCRYPT),
+                'role' => 'alumni',
+                'status' => (random_int(0, 1) == 1 ? 'verifed' : 'unverifed')
+            ];
 
-        // Create siswa account
-        $table->insert([
-            'name' => 'Agis nur anjani',
-            'username' => 'siswa1',
-            'email' => 'siswa@admin.com',
-            'password' => password_hash('siswa1234', PASSWORD_BCRYPT),
-            'role' => 'siswa',
-            'status' => 'verifed'
-        ]);
-
-        // Create alumni account - Coming soon
+            $table->insert($data);
+        }
     }
 }

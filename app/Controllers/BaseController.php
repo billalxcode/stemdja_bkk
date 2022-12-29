@@ -58,4 +58,12 @@ abstract class BaseController extends Controller
     public function renderContext() {
         return $this->response->setJSON($this->context)->setStatusCode(200);
     }
+
+    public function getUserData() {
+        $userModel = new \App\Models\UsersModel();
+        $token = session()->get('token');
+
+        $userdata = $userModel->select('username,email,name')->where('remember_token', $token)->first();
+        $this->context['userdata'] = $userdata;
+    }
 }

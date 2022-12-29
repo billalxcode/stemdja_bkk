@@ -42,6 +42,14 @@ $routes->get('/login', 'AuthController::index');
 $routes->get('/logout', 'AuthController::logout');
 $routes->post('/verify', 'AuthController::verify');
 
+$routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollection $routes) {
+    $routes->get('', 'Alumni\AlumniController::dashboard');
+
+    $routes->group('profile', function (RouteCollection $routes) {
+        $routes->get('', 'Alumni\AlumniController::profilePage');
+    });
+});
+
 $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection $routes) {
     $routes->get('', 'Admin\DashboardController::dashboard');
     $routes->group('profile', function (RouteCollection $routes) {
