@@ -39,10 +39,15 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'AuthController::index');
+$routes->get('/logout', 'AuthController::logout');
 $routes->post('/verify', 'AuthController::verify');
 
 $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection $routes) {
     $routes->get('', 'Admin\DashboardController::dashboard');
+    $routes->group('profile', function (RouteCollection $routes) {
+        $routes->get('', 'Admin\ProfileController::index');
+        $routes->post('save', 'Admin\ProfileController::save');
+    });
 
     $routes->group('alumni', function (RouteCollection $routes) {
         $routes->get('', 'Admin\AlumniController::manage');
@@ -69,6 +74,11 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post('getall', 'Admin\LokerController::getAll');
         $routes->post("store", 'Admin\LokerController::process_store');
         $routes->post("download", 'Admin\LokerController::download');
+    });
+
+    $routes->group('school', function (RouteCollection $routes) {
+        $routes->get('', "Admin\SchoolController::index");
+        $routes->post('save', 'Admin\SchoolController::save');
     });
 });
 

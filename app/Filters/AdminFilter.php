@@ -25,7 +25,15 @@ class AdminFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        $userModel = new \App\models\UsersModel();
+        $token = session()->get("token");
+
+        $userdata = $userModel->select('name')->where('remember_token', $token)->first();
+
+        if (!$userdata) {
+            session()->setFlashdata('error', 'Maaf anda belum login');
+            return redirect()->to('login');
+        }
     }
 
     /**

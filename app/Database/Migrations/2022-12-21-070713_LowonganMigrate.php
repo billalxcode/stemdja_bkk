@@ -48,11 +48,11 @@ class LowonganMigrate extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('info_lowongans');
+        $this->forge->createTable('info_lowongans', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('info_lowongans');
+        $this->forge->dropTable('info_lowongans', true);
     }
 }

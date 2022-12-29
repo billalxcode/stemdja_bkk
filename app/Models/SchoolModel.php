@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class SchoolModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
+    protected $table            = 'school_informations';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,7 +15,7 @@ class UsersModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name', 'username', 'email', 'password', 'status', 'role', 'remember_token'
+        'nama_sekolah', 'alamat', 'status', 'skoperasional', 'tgl_skoperasional', 'nama_kepsek', 'operator'
     ];
 
     // Dates
@@ -41,23 +41,4 @@ class UsersModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function create_token() {
-        $alpha = 'abcdefghijklmnopqrstuvwxyz1234567890';
-        $randombyte = random_bytes(rand(1024, 1024*3));
-        $hashes = hash('sha256', $randombyte);
-        $base64 = base64_encode($hashes);
-        $hashes2 = hash('md5', $base64);
-        return 'TOKEN:' . $hashes2;
-    }
-
-    public function verify_and_delete($token) {
-        $userdata = $this->select('id')->where('remember_token', $token)->first();
-        if (!$userdata) {
-            return false;
-        }
-
-        $this->delete($userdata['id'], true);
-        return true;
-    }
 }

@@ -68,11 +68,14 @@ class AuthController extends BaseController
 
     public function logout() {
         $token = $this->session->get('token');
-        $userdata = $this->userModel->find_token($token, 'id');
-
-        if ($userdata) {
-            $this->userModel->clear_token($userdata['id']);
+        $isdeleted = $this->userModel->verify_and_delete($token);
+        if ($isdeleted) {
             $this->session->destroy();
+            $this->session->setFlashdata('success', 'Anda berhasil logout');
+            return redirect()->to('login');
+        } else {
+            $this->session->setFlashdata('error', 'Maaf sepertinya terjadi kesalahaan pada saat logout');
+            return redirect()->to('admin');
         }
     }
 }

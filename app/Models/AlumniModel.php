@@ -52,12 +52,14 @@ class AlumniModel extends Model
         foreach ($alumnidata as $data) {
             $id = $data['id'];
             $userdata = $userModel->select('name,username,email')->where('id', $id)->first();
-            $jurusandata = $jurusanModel->select('name')->where('id', $data['jurusan_id'])->first();
-            $data['jurusan'] = $jurusandata;
-            foreach ($userdata as $key => $val) {
-                $data[$key] = $val;
+            if ($userdata) {
+                $jurusandata = $jurusanModel->select('name')->where('id', $data['jurusan_id'])->first();
+                $data['jurusan'] = $jurusandata;
+                foreach ($userdata as $key => $val) {
+                    $data[$key] = $val;
+                }
+                array_push($alumnidata_rev, $data);
             }
-            array_push($alumnidata_rev, $data);
         }
 
         return $alumnidata_rev;

@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
 
         // Create siswa account
         $table->insert([
-            'name' => 'Dede Dea',
+            'name' => 'Agis nur anjani',
             'username' => 'siswa1',
             'email' => 'siswa@admin.com',
             'password' => password_hash('siswa1234', PASSWORD_BCRYPT),
