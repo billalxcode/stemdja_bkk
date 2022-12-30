@@ -9,10 +9,11 @@ class UsersSeeder extends Seeder
 {
     public function run()
     {
-        $table = $this->db->table('users');
+        $userModel = new \App\Models\UsersModel();
+        $alumniModel = new \App\Models\AlumniModel();
 
         // Create admin account
-        $table->insert([
+        $userModel->save([
             'name' => 'Super Admin',
             'username' => 'admin',
             'email' => 'admin@admin.com',
@@ -22,6 +23,7 @@ class UsersSeeder extends Seeder
         ]);
         
         $factory = Factory::create('id_ID');
+
         for ($i = 0; $i < 100; $i++) {
             $data = [
                 'name' => $factory->name(),
@@ -32,7 +34,18 @@ class UsersSeeder extends Seeder
                 'status' => (random_int(0, 1) == 1 ? 'verifed' : 'unverifed')
             ];
 
-            $table->insert($data);
+            $userModel->save($data);
+            $userdata = $userModel->select('id')->where('email', $data['email'])->first();
+            $dataAlumni = [
+                'user_id' => $userdata['id'],
+                'jenis_kelamin' => (random_int(0, 1) == 1 ? 'male' : 'female'),
+                'jurusan_id' => 0,
+                'tahun_lulus' => random_int(1999, 2021),
+                'alamat' => $factory->address(),
+                'status' => 'kuliah',
+                'tempat_kerja' => $factory->address()
+            ];
+            $alumniModel->save($dataAlumni);
         }
     }
 }

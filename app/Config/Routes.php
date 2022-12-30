@@ -47,6 +47,7 @@ $routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollectio
 
     $routes->group('profile', function (RouteCollection $routes) {
         $routes->get('', 'Alumni\AlumniController::profilePage');
+        $routes->post('save', 'Alumni\AlumniController::profileSave');
     });
 });
 

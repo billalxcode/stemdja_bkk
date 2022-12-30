@@ -62,6 +62,7 @@ class AlumniMigrate extends Migration
         ]);
 
         $this->forge->addKey('id', true);
+        $this->forge->addUniqueKey('user_id');
         $this->forge->createTable('alumni', true);
     }
 
