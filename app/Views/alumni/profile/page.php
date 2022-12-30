@@ -1,4 +1,4 @@
-<?= $this->extend("layout/app"); ?>
+<?= $this->extend("layout/alumni/app"); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-xxl flex-grow-1 container-p-y">

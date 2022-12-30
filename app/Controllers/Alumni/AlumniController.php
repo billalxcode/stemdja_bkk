@@ -88,4 +88,11 @@ class AlumniController extends BaseController
 
         return redirect()->back();
     }
+
+    public function lokerPage() {
+        $lokerData = $this->lokerModel->findAll();
+
+        $this->context['lokerData'] = $lokerData;
+        return $this->render('alumni/loker/page');
+    }
 }
