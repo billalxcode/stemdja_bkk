@@ -1,5 +1,8 @@
 <?= $this->extend("layout/alumni/app"); ?>
+<?php
 
+use CodeIgniter\I18n\Time;
+?>
 <?= $this->section('content'); ?>
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -28,6 +31,12 @@
                             <div class="card-header">
                                 <a href="<?= base_url('alumni/loker/' . $loker['id']) ?>" class="card-title">
                                     <?= $loker['title'] ?>
+                                    <small class="float-end text-dark">
+                                        <?php
+                                        $time = new Time($loker['created_at']);
+                                        echo $time->humanize();
+                                        ?>
+                                    </small>
                                 </a>
                             </div>
                             <div class="card-body">
