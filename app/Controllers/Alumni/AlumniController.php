@@ -90,9 +90,15 @@ class AlumniController extends BaseController
     }
 
     public function lokerPage() {
-        $lokerData = $this->lokerModel->findAll();
+        $search  = $this->request->getGet('s');
+        if ($search) {
+            $lokerData = $this->lokerModel->like('title', $search)->orLike('kualifikasi', $search)->findAll();
+        } else {
+            $lokerData = $this->lokerModel->findAll();
+        }
 
         $this->context['lokerData'] = $lokerData;
+        $this->context['search'] = $search;
         return $this->render('alumni/loker/page');
     }
 }

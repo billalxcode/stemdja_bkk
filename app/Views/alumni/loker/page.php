@@ -7,12 +7,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="input-group flex-nowrap">
-                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" placeholder="Cari Loker" aria-label="Cari Loker" aria-describedby="addon-wrapping">
+                        <form action="<?= current_url(false) ?>" method="get">
+                            <div class="col-12">
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></span>
+                                    <input type="text" class="form-control" placeholder="Cari Loker" name="s" aria-label="Cari Loker" aria-describedby="addon-wrapping" value="<?= (isset($search) ? $search : '') ?>">
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>  
                 </div>
             </div>
@@ -29,14 +31,29 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <?= $loker['kualifikasi'] ?>
-                                
+                                <?php
+                                $word = explode(' ', $loker['kualifikasi']);
+                                $str = '';
+                                if(count($word) >= 20) {
+                                    for ($i = 0; $i < 20; $i++) {
+                                        $str .=  $word[$i] . ' ';
+                                    }
+                                    $str .= '...';
+                                } else {
+                                    $str = $loker['kualifikasi'];
+                                }
+
+                                echo $str;
+                                ?>
                             </div>
                             <div class="card-footer">
                                 <div class="float-start">
                                     <b><?= $loker['corporate_name'] ?></b>
                                 </div>
-                                <a href="<?= base_url('https://wa.me/' . $loker['corporate_contact']) ?>" class="btn btn-danger btn-sm float-end">
+                                <a href="<?= base_url('/alumni/loker/' . $loker['id']) ?>" class="btn btn-secondary btn-sm float-end mx-1">
+                                    Lihat
+                                </a>
+                                <a href="https://wa.me/<?= $loker['corporate_contact'] ?>" class="btn btn-danger btn-sm float-end mx-1">
                                     Lamar
                                 </a>
                             </div>
