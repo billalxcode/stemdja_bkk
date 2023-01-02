@@ -22,19 +22,37 @@ class LowonganMigrate extends Migration
             ],
             'corporate_name' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => false
-            ],
-            'kualifikasi' => [
-                'type' => 'TEXT',
-                'null' => false
+                'constraint' => 255
             ],
             'corporate_contact' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255 
+                'constraint' => 255
             ],
             'expired_date' => [
                 'type' => 'DATE'
+            ],
+            'pendidikan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255
+            ],
+            'tipe_pekerjaan' => [
+                'type' => 'ENUM("tetap","magang","freelance","fulltime","contract")'
+            ],
+            'province_code' => [
+                'type' => 'VARCHAR',
+                'constraint' => 5,
+            ],
+            'cities_code' => [
+                'type' => 'VARCHAR',
+                'constraint' => 5
+            ],
+            'range_gaji' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
+            ],
+            'deskripsi' => [
+                'type' => 'TEXT'
             ],
             'created_at' => [
                 'type' => 'DATETIME'

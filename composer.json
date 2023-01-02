@@ -8,7 +8,9 @@
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
         "fakerphp/faker": "^1.21",
-        "phpoffice/phpspreadsheet": "^1.26"
+        "phpoffice/phpspreadsheet": "^1.26",
+        "endroid/qr-code": "^4.7",
+        "dompdf/dompdf": "^2.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "^1.6",

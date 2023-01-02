@@ -28,13 +28,18 @@ class LokerController extends BaseController
     }
 
     public function save() {
-        $title              = $this->request->getPost("title");
-        $corporate_name     = $this->request->getPost("corporate_name");
+        $title              = $this->request->getPost('title');
+        $corporate_name     = $this->request->getPost('corporate_name');
         $corporate_contact  = $this->request->getPost("corporate_contact");
+        $pendidikan         = $this->request->getPost("pendidikan");
+        $tipe_pekerjaan     = $this->request->getPost("tipe_pekerjaan");
+        $provinsi           = $this->request->getPost("provinsi");
+        $kota               = $this->request->getPost("kota");
         $expired_date       = $this->request->getPost("expired_date");
-        $kualifikasi        = $this->request->getPost("kualifikasi");
+        $deskripsi          = $this->request->getPost('deskripsi');
 
-        $data = $this->lokerModel->create_data($title, $corporate_name, $corporate_contact, $expired_date, $kualifikasi);
+        $data = $this->lokerModel->create_data($title, $corporate_name, $corporate_contact, $expired_date, $pendidikan, $tipe_pekerjaan, $provinsi, $kota, $deskripsi);
+
         $this->lokerModel->save($data);
 
         $this->session->setFlashdata('success', 'Data berhasil disimpan');
@@ -82,9 +87,9 @@ class LokerController extends BaseController
 
                     try {
                         list($title, $kualifikasi, $corporate_name, $corporate_contact, $expired_date) = $val; 
-                        $lokers = $this->lokerModel->create_data($title, $corporate_name, $corporate_contact, $expired_date, $kualifikasi);
+                        // $lokers = $this->lokerModel->create_data($title, $corporate_name, $corporate_contact, $expired_date, $pendidikan, $tipe_pekerjaan, $provinsi, $kota, $deskripsi);
                         
-                        $this->lokerModel->save($lokers);
+                        // $this->lokerModel->save($lokers);
                         $success++;
                     } catch (Exception $e) {
                         $error++;
@@ -146,5 +151,19 @@ class LokerController extends BaseController
             $writer->save('php://output');
             exit();
         }
+    }
+
+    public function trash() {
+        $data_id = $this->request->getPost('id');
+        $paksa  = $this->request->getPost('paksa');
+        $deleted = $this->lokerModel->trashData($data_id, $paksa);
+
+        if ($deleted) {
+            $this->session->setFlashdata('success', 'Data berhasil dihapus');
+        } else {
+            $this->session->setFlashdata('error', 'Data gagal dihapus');
+        }
+
+        return redirect()->back();
     }
 }

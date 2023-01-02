@@ -6,6 +6,18 @@
         <div class="col-lg-12">
             <?= $this->include("layout/partials/alert"); ?>
         </div>
+        <div class="col-lg-12 my-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Semua Aksi</h4>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPrint">
+                        <fa class="fas fa-print"></fa> Cetak
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
@@ -64,6 +76,41 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalPrint" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPrintLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url('admin/alumni/print') ?>" method="post" id="triggerForm">
+                    <?= csrf_field() ?>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="paper">Opsi: </label>
+                            <select name="paper" id="paper" class="form-select">
+                                <option value="A4">Kertas A4 (Default)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" id="sendForm">Cetak PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection(); ?>
 
 <?= $this->section('css'); ?>
@@ -79,7 +126,9 @@
 <script src="<?= base_url() ?>/assets/vendor/libs/DataTables/datatables.min.js"></script>
 <script>
     $(document).on("click", "#sendForm", function () {
-        $("#triggerForm").submit()
+        let body = $(this).parent().parent()
+        let form = body.find('form#triggerForm')
+        form.submit()
     })
 
     $(document).on("click", "#triggerTrash", function () {

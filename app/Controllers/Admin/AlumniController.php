@@ -28,7 +28,7 @@ class AlumniController extends BaseController
 
     public function manage()
     {
-        $dataAlumni = $this->alumniModel->getAllData();
+        // $dataAlumni = $this->alumniModel->getAllData();
 
         // return $this->response->setJSON(json_encode($dataAlumni));
         return $this->render('admin/alumni/manage');
@@ -52,17 +52,6 @@ class AlumniController extends BaseController
     }
 
     public function save() {
-        $nama_lengkap   = $this->request->getPost("nama_lengkap");
-        $email          = $this->request->getPost("email");
-        $username       = $this->request->getPost("username");
-        $password       = $this->request->getPost("password");
-        $jurusan        = $this->request->getPost("jurusan");
-        $tahun_lulus    = $this->request->getPost("tahun_lulus");
-        $status         = $this->request->getPost("status");
-        $tempat_kerja   = $this->request->getPost("tempat_kerja");
-        $jenis_kelamin  = $this->request->getPost("jenis_kelamin");
-        $alamat         = $this->request->getPost("alamat");
-
         $rules = [
             'email' => [
                 'rules' => 'valid_email|is_unique[users.email]',
@@ -80,11 +69,22 @@ class AlumniController extends BaseController
         ];
 
         if ($this->validate($rules)) {
+            $nama_lengkap   = $this->request->getPost("nama_lengkap");
+            $email          = $this->request->getPost("email");
+            $username       = $this->request->getPost("username");
+            $password       = $this->request->getPost("password");
+            $jurusan        = $this->request->getPost("jurusan");
+            $tahun_lulus    = $this->request->getPost("tahun_lulus");
+            $status         = $this->request->getPost("status");
+            $tempat_kerja   = $this->request->getPost("tempat_kerja");
+            $jenis_kelamin  = $this->request->getPost("jenis_kelamin");
+            $alamat         = $this->request->getPost("alamat");
+            
             $dataAccount = [
                 'email' => $email,
                 'name' => $nama_lengkap,
                 'username' => $username,
-                'password' => password_hash($password, PASSWORD_BCRYPT),
+                'password' => password_hash((isset($password) ? $password : 'alumni2022'), PASSWORD_BCRYPT),
                 'role' => 'alumni'
             ];
 
@@ -281,5 +281,11 @@ class AlumniController extends BaseController
             $this->session->setFlashdata('error', 'Maaf format data tidak didukung');
             return redirect()->back();
         }
+    }
+
+    public function print() {
+        $data = $this->alumniModel->findAll();
+
+        return $this->render('admin/alumni/print', $data);
     }
 }

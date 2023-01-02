@@ -44,6 +44,8 @@ class AlumniModel extends Model
     protected $afterDelete    = [];
 
     public function getAllData() {
+        $token = session()->get('token');
+
         $userModel = new \App\Models\UsersModel();
         $jurusanModel = new \App\Models\JurusanModel();
 
@@ -51,8 +53,11 @@ class AlumniModel extends Model
         $alumnidata_rev = [];
         foreach ($alumnidata as $data) {
             $id = $data['id'];
-            $userdata = $userModel->select('name,username,email')->where('id', $id)->first();
+            $userdata = $userModel->select('name,username,email,remember_token')->where('id', $id)->first();
             if ($userdata) {
+                if (isset($userdata) && $userdata['remember_token'] == $token) {
+                    continue;
+                }
                 $jurusandata = $jurusanModel->select('name')->where('id', $data['jurusan_id'])->first();
                 $data['jurusan'] = $jurusandata;
                 foreach ($userdata as $key => $val) {

@@ -56,8 +56,9 @@ class UsersModel extends Model
         if (!$userdata) {
             return false;
         }
-
-        $this->delete($userdata['id'], true);
+        $this->update($userdata['id'], [
+            'remember_token' => null
+        ]);
         return true;
     }
 }

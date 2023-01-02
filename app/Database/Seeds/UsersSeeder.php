@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
         
         $factory = Factory::create('id_ID');
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data = [
                 'name' => $factory->name(),
                 'username' => $factory->userName(),

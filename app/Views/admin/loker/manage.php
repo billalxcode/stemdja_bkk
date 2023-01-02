@@ -44,6 +44,36 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalTrashData" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTrashDataLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin akan menghapus data ini secara permanen? Klik OK untuk mengkonfirmasi penghapusan.
+                <form action="<?= base_url('admin/loker/trash') ?>" method="post" id="triggerForm">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id" id="data_id">
+                    <div class="form-check mt-3">
+                        <input type="checkbox" name="force" id="force" value="ya" class="form-check-input" checked>
+                        <label class="form-check-label" for="force">
+                        Paksa Penghapusan
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" id="sendForm">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection(); ?>
 
 <?= $this->section('css'); ?>
@@ -53,6 +83,18 @@
 <?= $this->section('script'); ?>
 <script src="<?= base_url() ?>/assets/vendor/libs/DataTables/datatables.min.js"></script>
 <script>
+    $(document).on('click', '#sendForm', function () {
+        $('#triggerForm').submit()
+    })
+
+    $(document).on('click', '#btn-delete', function () {
+        let data = $(this).data('id')
+        let modal = $('#modalTrashData')
+        let input = modal.find('input[type="hidden"]#data_id')
+        input.val(data)
+        modal.modal('show')
+    })
+
     $(document).ready(function () {
         $('#table').DataTable({
             ajax: {
@@ -76,7 +118,16 @@
                 {
                     'data': 'id',
                     'render': function (data, type, row) {
-                        return data
+                        let button_group = document.createElement("div")
+                        let button_delete = document.createElement("button")
+                        button_delete.className = 'btn btn-danger btn-sm'
+                        button_delete.id = 'btn-delete'
+                        button_delete.setAttribute('data-id', data)
+                        button_delete.innerHTML = '<i class="fa fa-trash"></i>'
+
+                        button_group.appendChild(button_delete)
+
+                        return button_group.outerHTML
                     }   
                 }
             ]

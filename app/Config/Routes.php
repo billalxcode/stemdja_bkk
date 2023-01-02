@@ -42,6 +42,13 @@ $routes->get('/login', 'AuthController::index');
 $routes->get('/logout', 'AuthController::logout');
 $routes->post('/verify', 'AuthController::verify');
 
+$routes->group('/api', function (RouteCollection $routes) {
+    $routes->group('wilayah', function (RouteCollection $routes) {
+        $routes->post("get-cities", "Api\WilayahController::get_kota");
+        $routes->post('get-provinsi', 'Api\WilayahController::get_provinsi');
+    });
+});
+
 $routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollection $routes) {
     $routes->get('', 'Alumni\AlumniController::dashboard');
 
@@ -71,6 +78,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post('trash', 'Admin\AlumniController::trash');
         $routes->post("store", 'Admin\AlumniController::process_store');
         $routes->post("download", "Admin\AlumniController::download");
+        $routes->post("print", 'Admin\AlumniController::print');
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {
@@ -87,6 +95,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post('getall', 'Admin\LokerController::getAll');
         $routes->post("store", 'Admin\LokerController::process_store');
         $routes->post("download", 'Admin\LokerController::download');
+        $routes->post('trash', 'Admin\LokerController::trash');
     });
 
     $routes->group('school', function (RouteCollection $routes) {
