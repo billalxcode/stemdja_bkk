@@ -26,20 +26,25 @@ class SchoolController extends BaseController
     }
 
     public function save() {
-        $nama_sekolah = $this->request->getPost("nama_sekolah");
-        $alamat = $this->request->getPost("alamat");
-        $skoperasional = $this->request->getPost("skoperasional");
-        $tgl_skoperasional = $this->request->getPost("tgl_skoperasional");
-        $nama_kepsek = $this->request->getPost("nama_kepsek");
-        $nama_operator = $this->request->getPost("nama_operator");
-
+        $nama_sekolah       = $this->request->getPost("nama_sekolah");
+        $alamat             = $this->request->getPost("alamat");
+        $skoperasional      = $this->request->getPost("skoperasional");
+        $tgl_skoperasional  = $this->request->getPost("tgl_skoperasional");
+        $nama_kepsek        = $this->request->getPost("nama_kepsek");
+        $nama_operator      = $this->request->getPost("nama_operator");
+        $visi               = $this->request->getPost('visi');
+        $misi               = $this->request->getPost('misi');
+        $pendahuluan        = $this->request->getPost('pendahuluan');
         $data = [
-            'nama_sekolah' => $nama_sekolah,
-            'alamat' => $alamat,
-            'skoperasional' => $skoperasional,
+            'nama_sekolah'      => $nama_sekolah,
+            'alamat'            => $alamat,
+            'skoperasional'     => $skoperasional,
             'tgl_skoperasional' => $tgl_skoperasional,
-            'nama_kepsek' => $nama_kepsek,
-            'operator' => $nama_operator
+            'nama_kepsek'       => $nama_kepsek,
+            'operator'          => $nama_operator,
+            'misi'              => $misi,
+            'visi'              => $visi,
+            'pendahuluan'       => $pendahuluan
         ];
         $first = $this->schoolModel->first();
         if (!$first) {

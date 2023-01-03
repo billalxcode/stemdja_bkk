@@ -73,12 +73,13 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->get('', 'Admin\AlumniController::manage');
         $routes->get('create', 'Admin\AlumniController::create');
         $routes->get("store", 'Admin\AlumniController::store');
+        $routes->get("print", 'Admin\AlumniController::print');
+        $routes->get('rekap', 'Admin\AlumniController::rekap');
         $routes->post("save", 'Admin\AlumniController::save');
         $routes->post("getall", "Admin\AlumniController::getdata");
         $routes->post('trash', 'Admin\AlumniController::trash');
         $routes->post("store", 'Admin\AlumniController::process_store');
         $routes->post("download", "Admin\AlumniController::download");
-        $routes->post("print", 'Admin\AlumniController::print');
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {

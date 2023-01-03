@@ -58,11 +58,6 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-register-basic.html" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Tambah Data</div>
-                    </a>
-                </li>
-                <li class="menu-item">
                     <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
                         <div data-i18n="Basic">Import/Export Data</div>
                     </a>

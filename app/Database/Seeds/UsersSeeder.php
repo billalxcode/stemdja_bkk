@@ -7,6 +7,12 @@ use Faker\Factory;
 
 class UsersSeeder extends Seeder
 {
+    public function get_status() {
+        $statuses = ['belum_bekerja', 'bekerja', 'kuliah', 'berwirausaha'];
+        $randx = random_int(0, count($statuses) - 1);
+        return $statuses[$randx];
+    }
+    
     public function run()
     {
         $userModel = new \App\Models\UsersModel();
@@ -42,7 +48,7 @@ class UsersSeeder extends Seeder
                 'jurusan_id' => 0,
                 'tahun_lulus' => random_int(1999, 2021),
                 'alamat' => $factory->address(),
-                'status' => 'kuliah',
+                'status' => $this->get_status(),
                 'tempat_kerja' => $factory->address()
             ];
             $alumniModel->save($dataAlumni);

@@ -15,7 +15,8 @@ class SchoolModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nama_sekolah', 'alamat', 'status', 'skoperasional', 'tgl_skoperasional', 'nama_kepsek', 'operator'
+        'nama_sekolah', 'alamat', 'status', 'skoperasional', 'tgl_skoperasional', 'nama_kepsek', 'operator',
+        'visi', 'misi', 'pendahuluan'
     ];
 
     // Dates

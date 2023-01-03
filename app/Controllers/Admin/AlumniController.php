@@ -288,4 +288,11 @@ class AlumniController extends BaseController
 
         return $this->render('admin/alumni/print', $data);
     }
+
+    public function rekap() {
+        $rekapDataTahunLulus = $this->alumniModel->get_rekapDataTahunLulus();
+
+        $this->context['rekapData_tahunlulus'] = $rekapDataTahunLulus;
+        return $this->render("admin/alumni/rekap");
+    }
 }

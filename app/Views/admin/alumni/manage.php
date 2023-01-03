@@ -12,8 +12,11 @@
                     <h4 class="card-title">Semua Aksi</h4>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPrint">
-                        <fa class="fas fa-print"></fa> Cetak
+                    <a class="btn btn-primary" href="<?= base_url('admin/alumni/rekap') ?>">
+                        <i class="fa fa-list-alt"></i> Rekap
+                    </a>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPrint" disabled>
+                        <i class="fas fa-print"></i> Cetak
                     </button>
                 </div>
             </div>

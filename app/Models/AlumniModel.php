@@ -87,4 +87,20 @@ class AlumniModel extends Model
             return false;
         }
     }
+
+    public function get_rekapDataTahunLulus() {
+        $rekapData_real = [];
+        $statuses = ['belum_bekerja', 'bekerja', 'kuliah', 'berwirausaha'];
+        for ($i = 2000; $i < date('Y'); $i++) {
+            $rekapData_col = [];
+            $rekapData_col['tahun_lulus'] = $i;
+            foreach ($statuses as $status) {
+                $alumniData = $this->select('*')->where(['tahun_lulus' => $i, 'status' => $status])->findAll();
+                $rekapData_col[$status] = count($alumniData);
+            }
+            array_push($rekapData_real, $rekapData_col);
+        }
+
+        return $rekapData_real;
+    }
 }

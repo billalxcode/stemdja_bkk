@@ -46,6 +46,19 @@ class SchoolMigrate extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255
             ],
+            'visi' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+            'misi' => [
+                'type' => 'TEXT'
+            ],
+            'tujuan' => [
+                'type' => 'TEXT'
+            ],
+            'pendahuluan' => [
+                'type' => 'TEXT'
+            ],
             'created_at' => [
                 'type' => 'DATETIME'
             ],
