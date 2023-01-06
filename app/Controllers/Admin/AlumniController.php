@@ -291,8 +291,12 @@ class AlumniController extends BaseController
 
     public function rekap() {
         $rekapDataTahunLulus = $this->alumniModel->get_rekapDataTahunLulus();
+        $rekapDataStatus = $this->alumniModel->get_rekapStatus();
+        $rekapDataJurusan = $this->alumniModel->get_rekapJurusan();
 
+        $this->context['rekapData_status'] = $rekapDataStatus;
         $this->context['rekapData_tahunlulus'] = $rekapDataTahunLulus;
+        $this->context['rekapData_jurusan'] = $rekapDataJurusan;
         return $this->render("admin/alumni/rekap");
     }
 }

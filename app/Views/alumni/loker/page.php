@@ -65,7 +65,7 @@ use CodeIgniter\I18n\Time;
                                         </div>
                                         <div class="col-4">
                                             <!-- <div id="qrcode" data-text="Test saja sihh" onload="generate_qrcode()"></div> -->
-                                            <img src="<?= $loker['loker_qr_uri'] ?>" alt="Loker" style="width:120px;height:148px;">
+                                            <img src="<?= $loker['loker_qr_uri'] ?>" alt="Loker" style="width:120px;height:128px;">
                                         </div>
                                     </div>
                                 </div>

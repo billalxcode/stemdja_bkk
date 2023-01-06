@@ -103,4 +103,34 @@ class AlumniModel extends Model
 
         return $rekapData_real;
     }
+
+    public function get_rekapStatus() {
+        $rekapData_real = [];
+        $statuses = ['belum_bekerja', 'bekerja', 'kuliah', 'berwirausaha'];
+        foreach ($statuses as $status) {
+            $alumniData = $this->select('*')->where('status', $status)->findAll();
+            $rekapData_real[$status] = count($alumniData);
+        }
+        
+        return $rekapData_real;
+    }
+
+    public function get_rekapJurusan() {
+        $jurusanModel = new \App\Models\JurusanModel();
+        $jurusanData = $jurusanModel->select('id,name')->findAll();
+        $statuses = ['belum_bekerja', 'bekerja', 'kuliah', 'berwirausaha'];
+        $rekapData_real = [];
+        
+        foreach ($jurusanData as $jurusan) {
+            $rekapData_col = [];
+            $rekapData_col['jurusan'] = $jurusan['name'];
+            foreach ($statuses as $status) {
+                $alumniData = $this->select('*')->where(['status' => $status, 'jurusan_id' => $jurusan['id']])->findAll();
+                $rekapData_col[$status] = count($alumniData);
+            }
+            array_push($rekapData_real, $rekapData_col);
+        }
+
+        return $rekapData_real;
+    }
 }

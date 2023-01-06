@@ -61,9 +61,12 @@ abstract class BaseController extends Controller
 
     public function getUserData() {
         $userModel = new \App\Models\UsersModel();
+        $alumniModel = new \App\Models\AlumniModel();
         $token = session()->get('token');
 
-        $userdata = $userModel->select('username,email,name')->where('remember_token', $token)->first();
+        $userdata = $userModel->select('id,username,email,name')->where('remember_token', $token)->first();
+        $alumnidata = $alumniModel->select('*')->where('user_id', $userdata['id'])->first();
+        $userdata['details'] = $alumnidata;
         $this->context['userdata'] = $userdata;
     }
 }

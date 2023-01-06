@@ -6,6 +6,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        return "Ini adalah index";
+        return $this->render("home");
     }
 }

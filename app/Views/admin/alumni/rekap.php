@@ -8,46 +8,96 @@
         </div>
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-4 col-md-12 col-4 mb-4">
+                <div class="col-sm-6 col-xl-3 mb-2">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <i class="fa-solid fa-briefcase fa-2xl"></i>
+                            <div class="d-flex align-items-start justify-content-between">
+                            <div class="content-left">
+                                <span>Bekerja</span>
+                                <div class="d-flex align-items-end mt-2">
+                                <h4 class="mb-0 me-2"><?= $rekapData_status['bekerja'] ?></h4>
                                 </div>
+                                <small>Siswa</small>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Bekerja</span>
-                            <h3 class="card-title mb-2"><span class="fw-bold">15</span> Orang</h3>
+                            <span class="badge bg-label-primary rounded p-2">
+                                <i class="fa-solid fa-briefcase fa-2xl"></i>
+                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-4 mb-4">
+                <div class="col-sm-6 col-xl-3 mb-2">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <i class="fa fa-search fa-2xl">
-
-                                    </i>
+                            <div class="d-flex align-items-start justify-content-between">
+                            <div class="content-left">
+                                <span>Belum Bekerja</span>
+                                <div class="d-flex align-items-end mt-2">
+                                <h4 class="mb-0 me-2"><?= $rekapData_status['belum_bekerja'] ?></h4>
                                 </div>
+                                <small>Siswa</small>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Belum Bekerja</span>
-                            <h3 class="card-title mb-2"><span class="fw-bold">5</span> Orang</h3>
+                            <span class="badge bg-label-primary rounded p-2">
+                                <i class="fa-solid fa-search fa-2xl"></i>
+                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-4 mb-4">
+                <div class="col-sm-6 col-xl-3 mb-2">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="avatar flex-shrink-0">
-                                    <i class="fa-solid fa-graduation-cap fa-2xl"></i>
+                            <div class="d-flex align-items-start justify-content-between">
+                            <div class="content-left">
+                                <span>Melanjutkan</span>
+                                <div class="d-flex align-items-end mt-2">
+                                <h4 class="mb-0 me-2"><?= $rekapData_status['kuliah'] ?></h4>
                                 </div>
+                                <small>Siswa</small>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Kuliah</span>
-                            <h3 class="card-title mb-2"><span class="fw-bold">7</span> Orang</h3>
+                            <span class="badge bg-label-primary rounded p-2">
+                                <i class="fa-solid fa-graduation-cap fa-2xl"></i>
+                            </span>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-6 col-xl-3 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between">
+                            <div class="content-left">
+                                <span>Berwirausaha</span>
+                                <div class="d-flex align-items-end mt-2">
+                                <h4 class="mb-0 me-2"><?= $rekapData_status['berwirausaha'] ?></h4>
+                                </div>
+                                <small>Siswa</small>
+                            </div>
+                            <span class="badge bg-label-primary rounded p-2">
+                                <i class="fa-solid fa-graduation-cap fa-2xl"></i>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-lg-12 my-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Informasi</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-12">
+                            <span class="badge bg-warning">PERINGATAN : </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-12">
+                            <p> Jika siswa belum mengisi atau belum memperbaharui data jurusan dari profil siswa, maka rekapan nilai akan mengambil siswa yang sudah mengisi data jurusan nya.</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -102,7 +152,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php foreach ($rekapData_jurusan as $rekapData): ?>
+                                    <tr>
+                                        <td><?= $rekapData['jurusan'] ?></td>
+                                        <td><?= $rekapData['bekerja'] ?> Orang</td>
+                                        <td><?= $rekapData['kuliah'] ?> Orang</td>
+                                        <td><?= $rekapData['belum_bekerja'] ?> Orang</td>
+                                        <td><?= $rekapData['berwirausaha'] ?> Orang</td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>

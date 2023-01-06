@@ -30,7 +30,7 @@ class UsersSeeder extends Seeder
         
         $factory = Factory::create('id_ID');
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $data = [
                 'name' => $factory->name(),
                 'username' => $factory->userName(),
@@ -46,7 +46,7 @@ class UsersSeeder extends Seeder
                 'user_id' => $userdata['id'],
                 'jenis_kelamin' => (random_int(0, 1) == 1 ? 'male' : 'female'),
                 'jurusan_id' => 0,
-                'tahun_lulus' => random_int(1999, 2021),
+                'tahun_lulus' => date("Y") - 1,
                 'alamat' => $factory->address(),
                 'status' => $this->get_status(),
                 'tempat_kerja' => $factory->address()

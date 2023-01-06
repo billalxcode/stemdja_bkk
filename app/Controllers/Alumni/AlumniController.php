@@ -11,6 +11,7 @@ class AlumniController extends BaseController
     protected $userModel;
     protected $lokerModel;
     protected $alumniModel;
+    protected $jurusanModel;
 
     function __construct()
     {
@@ -18,12 +19,31 @@ class AlumniController extends BaseController
         $this->userModel = new \App\Models\UsersModel();
         $this->lokerModel = new \App\Models\LowonganModel();
         $this->alumniModel = new \App\Models\AlumniModel();
+        $this->jurusanModel = new \App\Models\JurusanModel();
     }
 
     public function dashboard()
     {
         $this->getUserData();
-        
+        $userDetails = $this->context['userdata']['details'];
+        if (!isset($userDetails)) {
+            $this->session->setFlashdata('warning', "Data profil anda belum diisi, mohon segera isi data profil.");
+        } else {
+            if (isset($userDetails['jurusan_id'])) {
+                $existJurusan = $this->jurusanModel->where('id', $userDetails['jurusan_id'])->first();
+                if (!$existJurusan) {
+                    $this->session->setFlashdata('warning', 'Data jurusan anda belum diperbaharui, segera perbaharui data jurusan anda.');
+                }
+            }
+
+            if (!isset($userDetails['status'])) {
+                $this->session->setFlashdata('warning', 'Data status kamu belum diperbaharui, segera perbaharui data status kamu.');
+            }
+
+            if (!isset($userDetails['alamat'])) {
+                $this->session->setFlashdata('warning', 'Data alamat kamu belum diisi, mohon segera isi alamat kamu.');
+            }
+        }
         $lokerdata = $this->lokerModel->findAll();
         $this->context['lokerdata'] = $lokerdata;
         return $this->render('alumni/dashboard');
@@ -33,8 +53,10 @@ class AlumniController extends BaseController
         $token = $this->session->get('token');
         $userdata = $this->userModel->select('id,name,username,email')->where('remember_token', $token)->first();
         $alumnidata = $this->alumniModel->where('user_id', $userdata['id'])->first();
+        $jurusanData = $this->jurusanModel->select('id,name,short')->findAll();
         $userdata['details'] = $alumnidata;
         
+        $this->context['jurusans'] = $jurusanData;
         $this->context['data'] = $userdata;
         
         return $this->render('alumni/profile/page');
