@@ -39,7 +39,6 @@ class UsersSeeder extends Seeder
                 'role' => 'alumni',
                 'status' => (random_int(0, 1) == 1 ? 'verifed' : 'unverifed')
             ];
-
             $userModel->save($data);
             $userdata = $userModel->select('id')->where('email', $data['email'])->first();
             $dataAlumni = [

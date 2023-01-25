@@ -48,6 +48,11 @@ $routes->group('/api', function (RouteCollection $routes) {
         $routes->post("get-cities", "Api\WilayahController::get_kota");
         $routes->post('get-provinsi', 'Api\WilayahController::get_provinsi');
     });
+
+    $routes->group('alumni', function (RouteCollection $routes) {
+        $routes->post("find", "Api\Alumni::find_alumni");
+        $routes->post('getall', 'Api\Alumni::get_all');
+    });
 });
 
 $routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollection $routes) {
@@ -81,6 +86,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post('trash', 'Admin\AlumniController::trash');
         $routes->post("store", 'Admin\AlumniController::process_store');
         $routes->post("download", "Admin\AlumniController::download");
+        $routes->post("update", "Admin\AlumniController::update");
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {

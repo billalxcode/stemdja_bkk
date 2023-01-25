@@ -91,7 +91,7 @@
 			$("#table").DataTable({
 				responsive: true,
 				ajax: {
-					url: BASE_URL + '/admin/alumni/getall',
+					url: BASE_URL + '/api/alumni/getall',
 					method: 'post',
 					dataSrc: 'data'
 				},
@@ -111,27 +111,6 @@
 					},
 					{
 						'data': 'tahun_lulus'
-					},
-					{
-						'data': 'alamat'
-					},
-					{
-						'data': 'status'
-					},
-					{
-						'data': 'id',
-						'render': function (data, type, row) {
-							let button_group = document.createElement('div')
-							button_group.className = "btn-group"
-							
-							let button_delete = document.createElement('button')
-							button_delete.className = 'btn btn-danger btn-sm'
-							button_delete.innerHTML = '<i class="fa fa-trash"></i>'
-							button_delete.setAttribute('data-id', data)
-							button_delete.id = "triggerTrash"
-							button_group.appendChild(button_delete)
-							return button_group.outerHTML
-						}
 					}
 				]
 			})

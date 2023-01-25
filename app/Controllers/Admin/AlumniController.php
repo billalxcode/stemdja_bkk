@@ -28,6 +28,9 @@ class AlumniController extends BaseController
 
     public function manage()
     {
+        $jurusandata = $this->jurusanModel->select('id,name,short')->findAll();
+
+        $this->context['jurusans'] = $jurusandata;
         // $dataAlumni = $this->alumniModel->getAllData();
 
         // return $this->response->setJSON(json_encode($dataAlumni));
@@ -298,5 +301,28 @@ class AlumniController extends BaseController
         $this->context['rekapData_tahunlulus'] = $rekapDataTahunLulus;
         $this->context['rekapData_jurusan'] = $rekapDataJurusan;
         return $this->render("admin/alumni/rekap");
+    }
+
+    public function update() {
+        $user_id = $this->request->getPost('user_id');
+        $status = $this->request->getPost('status');
+        $jurusan = $this->request->getPost("jurusan");
+
+        if (isset($user_id)) {
+            $alumnidata = $this->alumniModel->find($user_id);
+
+            if ($alumnidata) {
+                $this->alumniModel->update($user_id, [
+                    'status' => $status,
+                    'jurusan_id' => $jurusan
+                ]);
+
+                $this->session->setFlashdata('success', 'Data berhasil disimpan');
+                return redirect()->back();
+            } else {
+                $this->session->setFlashdata('error', 'Maaf data tidak ditemukan');
+                return redirect()->back();
+            }
+        }
     }
 }

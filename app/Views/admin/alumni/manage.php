@@ -65,7 +65,7 @@
                     <div class="form-check mt-3">
                         <input type="checkbox" name="force" id="force" value="ya" class="form-check-input" checked>
                         <label class="form-check-label" for="force">
-                        Paksa Penghapusan
+                            Paksa Penghapusan
                         </label>
                     </div>
                 </form>
@@ -114,6 +114,57 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalUpdate" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalUpdateLabel">Update Data <span id="fullname" class="fw-bold"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url('admin/alumni/update') ?>" method="post" id="triggerForm">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="user_id" id="user_id">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="status">Satus: </label>
+                            <select name="status" id="status" class="form-select">
+                                <option value="belum_bekerja">Belum Bekerja</option>
+                                <option value="bekerja">Bekerja</option>
+                                <option value="kuliah" selected>Kuliah</option>
+                                <option value="berwirausaha">Berwirausaha</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="jurusan">Jurusan</label>
+                            <select name="jurusan" id="jurusan" class="form-select">
+                                <?php if (empty($jurusans)) : ?>
+                                    <option value="">Data masih kosong</option>
+                                <?php else : ?>
+                                    <?php foreach ($jurusans as $jurusan) : ?>
+                                        <option value="<?= $jurusan['id'] ?>"><?= $jurusan['name'] ?> - <?= $jurusan['short'] ?></option>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" id="sendForm">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection(); ?>
 
 <?= $this->section('css'); ?>
@@ -128,13 +179,13 @@
 <?= $this->section('script'); ?>
 <script src="<?= base_url() ?>/assets/vendor/libs/DataTables/datatables.min.js"></script>
 <script>
-    $(document).on("click", "#sendForm", function () {
+    $(document).on("click", "#sendForm", function() {
         let body = $(this).parent().parent()
         let form = body.find('form#triggerForm')
         form.submit()
     })
 
-    $(document).on("click", "#triggerTrash", function () {
+    $(document).on("click", "#triggerTrash", function() {
         let data = $(this).data('id')
         let modalTrashData = $("#modalTrashData")
         let input = modalTrashData.find("input#data_id")
@@ -142,7 +193,28 @@
         modalTrashData.modal("show")
     })
 
-    $(document).ready(function () {
+    $(document).on("click", "#triggerEdit", function() {
+        let data = $(this).data('id')
+        $.ajax({
+            url: BASE_URL + '/api/alumni/find',
+            method: 'post',
+            data: {
+                'user_id': data
+            },
+            success: function(response) {
+                if (response['status'] == true) {
+                    let name = response['data']['name']
+                    let modalUpdateData = $("#modalUpdate")
+                    let user_id = $(modalUpdateData).find("form").find("input[type='hidden']#user_id")
+                    user_id.val(data)
+                    modalUpdateData.find(".modal-title").find("span#fullname").text(name)
+                    modalUpdateData.modal("show")
+                }
+            }
+        })
+    })
+
+    $(document).ready(function() {
         $("#table").DataTable({
             responsive: true,
             ajax: {
@@ -150,13 +222,12 @@
                 method: 'post',
                 dataSrc: 'data'
             },
-            columns: [
-                {
+            columns: [{
                     'data': 'name'
                 },
                 {
                     'data': 'jurusan.name',
-                    'render': function (data, type, row) {
+                    'render': function(data, type, row) {
                         if (data == "" || data == null) {
                             return 'Data tidak diketahui'
                         } else {
@@ -175,16 +246,24 @@
                 },
                 {
                     'data': 'id',
-                    'render': function (data, type, row) {
-                        let button_group = document.createElement('div')
-                        button_group.className = "btn-group"
-                        
+                    'render': function(data, type, row) {
+
+                        let button_group = document.createElement('span')
+
                         let button_delete = document.createElement('button')
-                        button_delete.className = 'btn btn-danger btn-sm'
+                        button_delete.className = 'btn btn-danger btn-sm mx-1'
                         button_delete.innerHTML = '<i class="fa fa-trash"></i>'
                         button_delete.setAttribute('data-id', data)
                         button_delete.id = "triggerTrash"
+
+                        let button_update = document.createElement("button")
+                        button_update.className = 'btn btn-primary btn-sm mx-1'
+                        button_update.innerHTML = '<i class="fa fa-edit"></i>'
+                        button_update.setAttribute("data-id", data)
+                        button_update.id = 'triggerEdit'
+
                         button_group.appendChild(button_delete)
+                        button_group.appendChild(button_update)
                         return button_group.outerHTML
                     }
                 }

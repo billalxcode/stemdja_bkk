@@ -10,7 +10,9 @@
         "fakerphp/faker": "^1.21",
         "phpoffice/phpspreadsheet": "^1.26",
         "endroid/qr-code": "^4.7",
-        "dompdf/dompdf": "^2.0"
+        "dompdf/dompdf": "^2.0",
+        "kint-php/kint": "^5.0",
+        "laminas/laminas-escaper": "^2.12"
     },
     "require-dev": {
         "mikey179/vfsstream": "^1.6",

@@ -25,7 +25,7 @@ class AdminFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $userModel = new \App\models\UsersModel();
+        $userModel = new \App\Models\UsersModel();
         $token = session()->get("token");
 
         $userdata = $userModel->select('name')->where(['remember_token' => $token, 'role' => 'admin'])->first();

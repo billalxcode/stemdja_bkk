@@ -43,7 +43,7 @@ class AlumniModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getAllData() {
+    public function getAllData(string $type = "private") {
         $token = session()->get('token');
 
         $userModel = new \App\Models\UsersModel();
@@ -55,7 +55,7 @@ class AlumniModel extends Model
             $id = $data['id'];
             $userdata = $userModel->select('name,username,email,remember_token')->where('id', $id)->first();
             if ($userdata) {
-                if (isset($userdata) && $userdata['remember_token'] == $token) {
+                if ($type == "private" && isset($userdata) && $userdata['remember_token'] == $token) {
                     continue;
                 }
                 $jurusandata = $jurusanModel->select('name')->where('id', $data['jurusan_id'])->first();
