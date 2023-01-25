@@ -2,478 +2,183 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Bursa Kerja Khusus SMKN 1 Maja</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <title>WoOx Travel - About Us</title>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<link href="<?= base_url('theme/regna') ?>/vendor/aos/aos.css" rel="stylesheet">
+	<link href="<?= base_url('theme/regna') ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?= base_url('theme/regna') ?>/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="<?= base_url('theme/regna') ?>/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="<?= base_url('theme/regna') ?>/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="<?= base_url('theme/regna') ?>/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <!--
-
-TemplateMo 580 Woox Travel
-
-https://templatemo.com/tm-580-woox-travel
-
--->
+	<!-- Template Main CSS File -->
+	<link href="<?= base_url('theme/regna') ?>/css/style.css" rel="stylesheet">
 </head>
 
 <body>
+	<?= $this->include('layout/partials/header'); ?>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
-            <span class="dot"></span>
-            <div class="dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" style="background: url('<?= base_url('theme/regna/img/banner.JPG') ?>') top center">
+		<div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+			<h1>Bursa Kerja Khusus SMKN 1 Maja</h1>
+			<h2>Tempat terbaik untuk mencari lowongan pekerjaan bagi pelajar lulusan SMKN 1 Maja</h2>
+			<a href="#about" class="btn-get-started">Cari Pekerjaan</a>
+		</div>
+	</section><!-- End Hero Section -->
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png" alt="">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html" class="active">About</a></li>
-                            <li><a href="deals.html">Deals</a></li>
-                            <li><a href="reservation.html">Reservation</a></li>
-                            <li><a href="reservation.html">Book Yours</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+	<main id="main">
+		<!-- ======= About Section ======= -->
+		<section id="about">
+			<div class="container" data-aos="fade-up">
+				<div class="row about-container">
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="about-main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="content">
-                        <div class="blur-bg"></div>
-                        <h4>EXPLORE OUR COUNTRY</h4>
-                        <div class="line-dec"></div>
-                        <h2>Welcome To Caribbean</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt uttersi labore et dolore magna aliqua is ipsum suspendisse ultrices gravida</p>
-                        <div class="main-button">
-                            <a href="reservation.html">Discover More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
+					<div class="col-lg-6 content order-lg-1 order-2">
+						<h2 class="title">Tentang SMKN 1 Maja</h2>
+						<p>
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae accusantium debitis ipsa harum sequi error ratione quos eligendi voluptate delectus rem quae, et assumenda minus quaerat tenetur, placeat maxime nostrum!
+						</p>
 
-    <div class="cities-town">
-        <div class="container">
-            <div class="row">
-                <div class="slider-content">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2>Caribbean’s <em>Cities &amp; Towns</em></h2>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="owl-cites-town owl-carousel">
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-01.jpg" alt="">
-                                        <h4>Havana</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-02.jpg" alt="">
-                                        <h4>Kingston</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-03.jpg" alt="">
-                                        <h4>George Town</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-04.jpg" alt="">
-                                        <h4>Santo Domingo</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-01.jpg" alt="">
-                                        <h4>Havana</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-02.jpg" alt="">
-                                        <h4>Kingston</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-03.jpg" alt="">
-                                        <h4>George Town</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-04.jpg" alt="">
-                                        <h4>Santo Domingo</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+							<div class="icon"><i class="bi bi-map"></i></div>
+							<h4 class="title"><a href="">Lokasi</a></h4>
+							<p class="description"><a href="https://goo.gl/maps/nSwbZ4ZpG7j6eVJD9"></a> 4862+3J2, Maja Sel., Kec. Maja, Kabupaten Majalengka, Jawa Barat</p>
+						</div>
 
-    <div class="weekly-offers">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading text-center">
-                        <h2>Best Weekly Offers In Each City</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="owl-weekly-offers owl-carousel">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-01.jpg" alt="">
-                                <div class="text">
-                                    <h4>Havana<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-02.jpg" alt="">
-                                <div class="text">
-                                    <h4>Kingston<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-03.jpg" alt="">
-                                <div class="text">
-                                    <h4>George Town<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-01.jpg" alt="">
-                                <div class="text">
-                                    <h4>Havana<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-02.jpg" alt="">
-                                <div class="text">
-                                    <h4>Kingston<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="assets/images/offers-03.jpg" alt="">
-                                <div class="text">
-                                    <h4>George Town<br><span><i class="fa fa-users"></i> 234 Check Ins</span></h4>
-                                    <h6>$420<br><span>/person</span></h6>
-                                    <div class="line-dec"></div>
-                                    <ul>
-                                        <li>Deal Includes:</li>
-                                        <li><i class="fa fa-taxi"></i> 5 Days Trip > Hotel Included</li>
-                                        <li><i class="fa fa-plane"></i> Airplane Bill Included</li>
-                                        <li><i class="fa fa-building"></i> Daily Places Visit</li>
-                                    </ul>
-                                    <div class="main-button">
-                                        <a href="reservation.html">Make a Reservation</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+							<div class="icon"><i class="bi bi-envelope"></i></div>
+							<h4 class="title"><a href="">Email</a></h4>
+							<p class="description">smkn1maja@yahoo.co.id</p>
+						</div>
 
-    <div class="more-about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 align-self-center">
-                    <div class="left-image">
-                        <img src="assets/images/about-left-image.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-heading">
-                        <h2>Discover More About Our Country</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="info-item">
-                                <h4>150.640 +</h4>
-                                <span>Total Guests Yearly</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="info-item">
-                                <h4>175.000+</h4>
-                                <span>Amazing Accomoditations</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="info-item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h4>12.560+</h4>
-                                        <span>Amazing Places</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4>240.580+</h4>
-                                        <span>Different Check-ins Yearly</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <div class="main-button">
-                        <a href="reservation.html">Discover More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+							<div class="icon"><i class="bi bi-globe"></i></div>
+							<h4 class="title"><a href="">Website</a></h4>
+							<p class="description">https://smkn1maja.sch.id</p>
+						</div>
 
-    <div class="best-locations">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading text-center">
-                        <h2>Best Locations In Caribbeans</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="options">
-                        <div class="option active" style="--optionBackground:url(https://buttoncreatives.com/html/woox/assets/images/best-01.jpg);">
-                            <div class="shadow"></div>
-                            <div class="label">
-                                <div class="icon">
-                                    <i class="fas fa-expand"></i>
-                                </div>
-                                <div class="info">
-                                    <div class="main">Havana</div>
-                                    <div class="sub">Population: 2M</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="option" style="--optionBackground:url(https://buttoncreatives.com/html/woox/assets/images/best-02.jpg);">
-                            <div class="shadow"></div>
-                            <div class="label">
-                                <div class="icon">
-                                    <i class="fas fa-expand"></i>
-                                </div>
-                                <div class="info">
-                                    <div class="main">Kingston</div>
-                                    <div class="sub">Population: 3.5M</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="option" style="--optionBackground:url(https://buttoncreatives.com/html/woox/assets/images/best-03.jpg);">
-                            <div class="shadow"></div>
-                            <div class="label">
-                                <div class="icon">
-                                    <i class="fas fa-expand"></i>
-                                </div>
-                                <div class="info">
-                                    <div class="main">London</div>
-                                    <div class="sub">Population: 4.1M</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="option" style="--optionBackground:url(https://buttoncreatives.com/html/woox/assets/images/best-04.jpg);">
-                            <div class="shadow"></div>
-                            <div class="label">
-                                <div class="icon">
-                                    <i class="fas fa-expand"></i>
-                                </div>
-                                <div class="info">
-                                    <div class="main">Pristina</div>
-                                    <div class="sub">Population: 520K</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="option" style="--optionBackground:url(https://buttoncreatives.com/html/woox/assets/images/best-05.jpg);">
-                            <div class="shadow"></div>
-                            <div class="label">
-                                <div class="icon">
-                                    <i class="fas fa-expand"></i>
-                                </div>
-                                <div class="info">
-                                    <div class="main">Paris</div>
-                                    <div class="sub">Population: 3M</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="main-button text-center">
-                        <a href="deals.html">Discover All Places</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					</div>
 
-    <div class="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2>Are You Looking To Travel ?</h2>
-                    <h4>Make A Reservation By Clicking The Button</h4>
-                </div>
-                <div class="col-lg-4">
-                    <div class="border-button">
-                        <a href="reservation.html">Book Yours Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/1vwf0beqPZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved.
-                        <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distribution: <a href="https://themewagon.com target=" _blank">ThemeWagon</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+					<!-- <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div> -->
+				</div>
 
+			</div>
+		</section><!-- End About Section -->
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!-- ======= Facts Section ======= -->
+		<section id="facts">
+			<div class="container" data-aos="fade-up">
+				<div class="section-header">
+					<h3 class="section-title">Fakta</h3>
+					<p class="section-description">Berikut informasi data yang ada di sekolah</p>
+				</div>
+				<div class="row counters">
 
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/wow.js"></script>
-    <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/popup.js"></script>
-    <script src="assets/js/custom.js"></script>
+					<div class="col-lg-3 col-6 text-center">
+						<span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+						<p>Mitra</p>
+					</div>
 
-    <script>
-        $(".option").click(function() {
-            $(".option").removeClass("active");
-            $(this).addClass("active");
-        });
-    </script>
+					<div class="col-lg-3 col-6 text-center">
+						<span data-purecounter-start="0" data-purecounter-end="<?= $totalLoker ?>" data-purecounter-duration="1" class="purecounter"></span>
+						<p>Loker</p>
+					</div>
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-purecounter-start="0" data-purecounter-end="<?= $totalAlumni ?>" data-purecounter-duration="1" class="purecounter"></span>
+						<p>Alumni Terdaftar</p>
+					</div>
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-purecounter-start="0" data-purecounter-end="<?= $totalJurusan ?>" data-purecounter-duration="1" class="purecounter"></span>
+						<p>Jurusan</p>
+					</div>
+				</div>
+
+			</div>
+		</section><!-- End Facts Section -->
+
+		<!-- ======= Services Section ======= -->
+		<section id="services">
+			<div class="container" data-aos="fade-up">
+				<div class="section-header">
+					<h3 class="section-title">Layanan</h3>
+					<p class="section-description">Berikut layanan yang kami berikan</p>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6" data-aos="zoom-in">
+						<div class="box">
+							<div class="icon"><a href=""><i class="bi bi-briefcase"></i></a></div>
+							<h4 class="title"><a href="">Penyedia</a></h4>
+							<p class="description">Kami menyediakan pekerjaan untuk membantu siswa yang baru lulus dari sekolah atau perguruan tinggi dalam menemukan pekerjaan yang seduai dengan minat dan bakat</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6" data-aos="zoom-in">
+						<div class="box">
+							<div class="icon"><a href=""><i class="bi bi-card-checklist"></i></a></div>
+							<h4 class="title"><a href="">Up to date</a></h4>
+							<p class="description">Pekerjaan yang disediakan kepada pengguna selalu up-to-date dan akurat. Kami memastikan bahwa pengguna selalu dapat mengakses data yang akurat dan up-to-date</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6" data-aos="zoom-in">
+						<div class="box">
+							<div class="icon"><a href=""><i class="bi bi-bar-chart"></i></a></div>
+							<h4 class="title"><a href="">Peningkatan</a></h4>
+							<p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section><!-- End Services Section -->
+
+		<!-- ======= Contact Section ======= -->
+		<section id="contact">
+			<div class="container">
+				<div class="section-header">
+					<h3 class="section-title">PETA</h3>
+					<p class="section-description">Katakan peta, katakan peta, peta.................</p>
+				</div>
+			</div>
+
+			<!-- Uncomment below if you wan to use dynamic maps -->
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.024315570883!2d108.301505!3d-6.8898742!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x46c05262df72c867!2sSmkn%201%20maja!5e0!3m2!1sid!2sid!4v1674029834497!5m2!1sid!2sid" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</section><!-- End Contact Section -->
+
+	</main><!-- End #main -->
+
+	<?= $this->include('layout/partials/footer'); ?>
+
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="<?= base_url('theme/regna') ?>/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/aos/aos.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="<?= base_url('theme/regna') ?>/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="<?= base_url('theme/regna') ?>/js/main.js"></script>
 
 </body>
 

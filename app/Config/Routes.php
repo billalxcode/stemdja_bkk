@@ -41,6 +41,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'AuthController::index');
 $routes->get('/logout', 'AuthController::logout');
 $routes->post('/verify', 'AuthController::verify');
+$routes->get('/cari', 'Home::alumniIndex');
 
 $routes->group('/api', function (RouteCollection $routes) {
     $routes->group('wilayah', function (RouteCollection $routes) {
