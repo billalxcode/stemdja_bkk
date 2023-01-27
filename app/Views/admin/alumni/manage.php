@@ -203,10 +203,17 @@
             },
             success: function(response) {
                 if (response['status'] == true) {
-                    let name = response['data']['name']
+                    let name            = response['data']['name']
+                    let status_val      = response['data']['status']
+                    let jurusan_id      = response['data']['jurusan_id']
+
                     let modalUpdateData = $("#modalUpdate")
-                    let user_id = $(modalUpdateData).find("form").find("input[type='hidden']#user_id")
+                    let user_id         = $(modalUpdateData).find("form").find("input[type='hidden']#user_id")
+                    let status          = $(modalUpdateData).find("form").find("select#status")
+                    let jurusan         = $(modalUpdateData).find("form").find("select#jurusan")
                     user_id.val(data)
+                    status.val(status_val)
+                    jurusan.val(jurusan_id)
                     modalUpdateData.find(".modal-title").find("span#fullname").text(name)
                     modalUpdateData.modal("show")
                 }

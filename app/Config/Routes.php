@@ -91,6 +91,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
 
     $routes->group('jurusan', function (RouteCollection $routes) {
         $routes->get('', 'Admin\JurusanController::manage');
+        $routes->get("delete", 'Admin\JurusanController::delete');
         $routes->post('save', 'Admin\JurusanController::save');
         $routes->post('getall', 'Admin\JurusanController::getAll');
     });
@@ -109,6 +110,10 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
     $routes->group('school', function (RouteCollection $routes) {
         $routes->get('', "Admin\SchoolController::index");
         $routes->post('save', 'Admin\SchoolController::save');
+    });
+
+    $routes->group('mitra', function (RouteCollection $routes) {
+        $routes->get('', 'Admin\MitraController::index'); // On development
     });
 });
 

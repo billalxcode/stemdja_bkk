@@ -23,10 +23,12 @@ class JurusanController extends BaseController
     }
 
     public function save() {
+        $kode = $this->request->getPost("kode");
         $name = $this->request->getPost("name");
         $short = $this->request->getPost("short");
 
         $this->jurusanModel->save([
+            'kode' => $kode,
             'name' => $name,
             'short' => $short
         ]);
@@ -37,10 +39,27 @@ class JurusanController extends BaseController
 
     public function getAll() {
         // Temporary API
-        $jurusan_data = $this->jurusanModel->select('id,name,short')->findAll();
+        $jurusan_data = $this->jurusanModel->select('id,kode,name,short')->findAll();
 
         $this->context['data'] = $jurusan_data;
 
         return $this->renderContext();
+    }
+
+    public function delete() {
+        $jurusan_id = $this->request->getGet('id');
+        if (isset($jurusan_id)) {
+            $exists = $this->jurusanModel->select('id')->where('id', $jurusan_id)->first();
+            if ($exists) {
+                $this->jurusanModel->delete($exists['id']);
+                $this->session->setFlashdata('success', 'Data berhasil dihapus');
+            } else {
+                $this->session->setFlashdata('error', 'Maaf data gagal dihapus');
+            }
+
+            return redirect()->back();
+        } else {
+
+        }
     }
 }

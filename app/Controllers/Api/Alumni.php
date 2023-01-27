@@ -33,7 +33,7 @@ class Alumni extends BaseController
         $user_id = $this->request->getPost("user_id");
         
         if (isset($user_id)) {
-            $alumnidata = $this->alumniModel->select('user_id')->where('id', $user_id)->first();
+            $alumnidata = $this->alumniModel->select('user_id,status,jurusan_id')->where('id', $user_id)->first();
             if ($alumnidata) {
                 // echo var_dump($alumnidata);
                 $userdata = $this->userModel->select('name')->where('id', $alumnidata['user_id'])->first();

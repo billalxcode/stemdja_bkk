@@ -21,29 +21,31 @@ class AlumniMigrate extends Migration
                 'null' => false,
             ],
             'jenis_kelamin' => [
-                'type' => 'ENUM("male","female")'
+                'type' => 'ENUM("male","female")',
+                'null' => true
             ],
             'jurusan_id' => [
                 'type' => 'INT',
                 'constraint' => 5,
-                'null' => false,
+                'null' => true,
             ],
             'tahun_lulus' => [
                 'type' => 'VARCHAR',
                 'constraint' => 4,
-                'null' => false
+                'null' => true
             ],
             'alamat' => [
                 'type' => 'TEXT',
-                'null' => false
+                'null' => true
             ], 
             'status' => [
-                'type' => 'ENUM("belum_bekerja","bekerja","kuliah","berwirausaha")'
+                'type' => 'ENUM("belum_bekerja","bekerja","kuliah","berwirausaha")',
+                'null' => true
             ],
             'kontak' => [
                 'type' => 'VARCHAR',
                 'constraint' => 25,
-                'null' => false
+                'null' => true
             ],
             'tempat_kerja' => [
                 'type' => 'VARCHAR',

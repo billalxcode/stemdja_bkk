@@ -138,6 +138,7 @@ class AlumniController extends BaseController
     }
 
     public function process_store() {
+        helper('random');
         $rules = [
             'files' => [
                 'rules' => 'uploaded[files]',
@@ -155,16 +156,25 @@ class AlumniController extends BaseController
                 $reader =  new Xlsx();
                 $spreadsheet = $reader->load($files);
                 $data = $spreadsheet->getActiveSheet()->toArray();
-    
+                
                 list($success, $error) = [0, 0];
                 foreach ($data as $key => $val) {
-                    if ($key == 0) {
+                    if ($key <= 2) {
                         continue;
                     }
+                    // if (empty(array_filter($val, function ($a) { return $a !== null;})) == true) {
+                    //     $error += 1;
+                    // } else {
+                    //     $success += 1;
+                    // }
 
+                    $val = array_slice($val, 0, 7);
+                    list($nama_lengkap, $email, $username, $password, $jenis_kelamin, $kode_jurusan, $tahun_lulus) = $val;
                     try {
-                        list($nama_lengkap, $email, $username, $password, $jurusan_id, $tahun_lulus, $status, $tempat_kerja, $jenis_kelamin, $alamat) = $val;
-    
+                        $jurusan_id = $this->jurusanModel->find_by_code($kode_jurusan);
+
+                        $email = (strtolower($email) == "auto" ? generate_email($nama_lengkap) : $email);
+                        $username = (strtolower($username) == "auto" ? generate_username($nama_lengkap) : $username);
                         $dataAccount = [
                             'email' => $email,
                             'name' => $nama_lengkap,
@@ -173,27 +183,51 @@ class AlumniController extends BaseController
                             'role' => 'alumni'
                         ];
                         $this->userModel->save($dataAccount);
-    
                         $getDataAccount = $this->userModel->select('id')->where('email', $email)->first();
-                        
+
                         $dataAlumni = [
                             'user_id' => $getDataAccount['id'],
-                            'jenis_kelamin' => $jenis_kelamin,
-                            'jurusan_id' => $jurusan_id,
+                            'jenis_kelamin' => ($jenis_kelamin == "L" ? 'male' : 'female'),
                             'tahun_lulus' => $tahun_lulus,
-                            'alamat' => $alamat,
-                            'status' => $status,
-                            'kontak' => '',
-                            'tempat_kerja' => $tempat_kerja
+                            'jurusan_id' => ($jurusan_id == false ? '0' : $jurusan_id)
                         ];
-    
+
                         $this->alumniModel->save($dataAlumni);
                         $success += 1;
                     } catch (Exception $e) {
                         $error += 1;
                     }
+                    // try {
+                    //     list($nama_lengkap, $email, $username, $password, $jurusan_id, $tahun_lulus, $status, $tempat_kerja, $jenis_kelamin, $alamat) = $val;
+    
+                    //     $dataAccount = [
+                    //         'email' => $email,
+                    //         'name' => $nama_lengkap,
+                    //         'username' => $username,
+                    //         'password' => password_hash($password, PASSWORD_BCRYPT),
+                    //         'role' => 'alumni'
+                    //     ];
+                    //     $this->userModel->save($dataAccount);
+    
+                    //     $getDataAccount = $this->userModel->select('id')->where('email', $email)->first();
+                        
+                    //     $dataAlumni = [
+                    //         'user_id' => $getDataAccount['id'],
+                    //         'jenis_kelamin' => $jenis_kelamin,
+                    //         'jurusan_id' => $jurusan_id,
+                    //         'tahun_lulus' => $tahun_lulus,
+                    //         'alamat' => $alamat,
+                    //         'status' => $status,
+                    //         'kontak' => '',
+                    //         'tempat_kerja' => $tempat_kerja
+                    //     ];
+    
+                    //     $this->alumniModel->save($dataAlumni);
+                    //     $success += 1;
+                    // } catch (Exception $e) {
+                    //     $error += 1;
+                    // }
                 }
-
                 $this->session->setFlashdata('success', 'Data berhasil di import, sukses ' . $success . ', error ' . $error);
                 return redirect()->back();
             } else {

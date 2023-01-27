@@ -7,6 +7,9 @@ $(document).ready(function() {
         },
         columns: [
             {
+                data: 'kode'
+            },
+            {
                 data: 'name'
             },
             {

@@ -28,29 +28,29 @@ class UsersSeeder extends Seeder
             'status' => 'verifed'
         ]);
         
-        $factory = Factory::create('id_ID');
+        // $factory = Factory::create('id_ID');
 
-        for ($i = 0; $i < 100; $i++) {
-            $data = [
-                'name' => $factory->name(),
-                'username' => $factory->userName(),
-                'email' => $factory->email(),
-                'password' => password_hash('alumni2022', PASSWORD_BCRYPT),
-                'role' => 'alumni',
-                'status' => (random_int(0, 1) == 1 ? 'verifed' : 'unverifed')
-            ];
-            $userModel->save($data);
-            $userdata = $userModel->select('id')->where('email', $data['email'])->first();
-            $dataAlumni = [
-                'user_id' => $userdata['id'],
-                'jenis_kelamin' => (random_int(0, 1) == 1 ? 'male' : 'female'),
-                'jurusan_id' => 0,
-                'tahun_lulus' => date("Y") - 1,
-                'alamat' => $factory->address(),
-                'status' => $this->get_status(),
-                'tempat_kerja' => $factory->address()
-            ];
-            $alumniModel->save($dataAlumni);
-        }
+        // for ($i = 0; $i < 100; $i++) {
+        //     $data = [
+        //         'name' => $factory->name(),
+        //         'username' => $factory->userName(),
+        //         'email' => $factory->email(),
+        //         'password' => password_hash('alumni2022', PASSWORD_BCRYPT),
+        //         'role' => 'alumni',
+        //         'status' => (random_int(0, 1) == 1 ? 'verifed' : 'unverifed')
+        //     ];
+        //     $userModel->save($data);
+        //     $userdata = $userModel->select('id')->where('email', $data['email'])->first();
+        //     $dataAlumni = [
+        //         'user_id' => $userdata['id'],
+        //         'jenis_kelamin' => (random_int(0, 1) == 1 ? 'male' : 'female'),
+        //         'jurusan_id' => 0,
+        //         'tahun_lulus' => date("Y") - 1,
+        //         'alamat' => $factory->address(),
+        //         'status' => $this->get_status(),
+        //         'tempat_kerja' => $factory->address()
+        //     ];
+        //     $alumniModel->save($dataAlumni);
+        // }
     }
 }

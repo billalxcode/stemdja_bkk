@@ -29,6 +29,7 @@
                         <table class="table nowrap" id="table" style="width: 100%;">
                             <thead>
                                 <tr>
+                                    <th>Kode Jurusan</th>
                                     <th>Nama Jurusan</th>
                                     <th>Singkatan</th>
                                     <th>Aksi</th>
@@ -56,6 +57,10 @@
                 <form action="<?= base_url('admin/jurusan/save') ?>" method="post" id="triggerForm">
                     <?= csrf_field() ?>
                     <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="kode">Kode Jurusan</label>
+                            <input type="text" name="kode" id="kode" class="form-control" placeholder="Kode jurusan">
+                        </div>
                         <div class="col-12 mb-3">
                             <label for="name">Nama Jurusan</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Nama jurusan" autofocus>

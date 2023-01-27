@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Alumni</span>
-                            <h3 class="card-title mb-2">$12,628</h3>
+                            <h3 class="card-title mb-2"><?= $totalAlumni ?></h3>
                         </div>
                     </div>
                 </div>
@@ -46,22 +46,12 @@
                                 </div>
                             </div>
                             <span>Jurusan</span>
-                            <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                            <h3 class="card-title text-nowrap mb-1"><?= $totalJurusan ?></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-12 mb-4 order-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Cari Loker" aria-label="Cari Loker" aria-describedby="addon-wrapping">
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
 <?= $this->endSection(); ?>

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class JurusanModel extends Model
+class MitraModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jurusans';
+    protected $table            = 'mitra';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,7 +15,7 @@ class JurusanModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'name', 'short', 'kode'
+        'name', 'address', 'site'
     ];
 
     // Dates
@@ -41,13 +41,4 @@ class JurusanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function find_by_code($code) {
-        $exists = $this->select('id')->where('kode', $code)->first();
-        if ($exists) {
-            return $exists['id'];
-        } else {
-            return false;
-        }
-    }
 }

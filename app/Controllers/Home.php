@@ -24,6 +24,7 @@ class Home extends BaseController
         $totalJurusan = $this->jurusanModel->findAll();
         $totalAlumni = $this->userModel->where('role', 'alumni')->findAll();
         $totalLoker = $this->lokerModel->findAll();
+        
         $this->context['transparent'] = true;
         $this->context['totalAlumni'] = (isset($totalAlumni) ? count($totalAlumni) : 0);
         $this->context['totalLoker'] = (isset($totalLoker) ? count($totalLoker) : 0);

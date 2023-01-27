@@ -36,7 +36,7 @@
 		<div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
 			<h1>Bursa Kerja Khusus SMKN 1 Maja</h1>
 			<h2>Tempat terbaik untuk mencari lowongan pekerjaan bagi pelajar lulusan SMKN 1 Maja</h2>
-			<a href="#about" class="btn-get-started">Cari Pekerjaan</a>
+			<a href="<?= base_url('loker') ?>" class="btn-get-started">Cari Pekerjaan</a>
 		</div>
 	</section><!-- End Hero Section -->
 
