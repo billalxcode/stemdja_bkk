@@ -53,6 +53,10 @@ $routes->group('/api', function (RouteCollection $routes) {
         $routes->post("find", "Api\Alumni::find_alumni");
         $routes->post('getall', 'Api\Alumni::get_all');
     });
+
+    $routes->group('mitra', function (RouteCollection $routes) {
+        $routes->post("getall", 'Api\Mitra::getall');
+    });
 });
 
 $routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollection $routes) {
@@ -113,7 +117,8 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
     });
 
     $routes->group('mitra', function (RouteCollection $routes) {
-        $routes->get('', 'Admin\MitraController::index'); // On development
+        $routes->get('', 'Admin\MitraController::index');
+        $routes->post("save", 'Admin\MitraController::save');
     });
 });
 

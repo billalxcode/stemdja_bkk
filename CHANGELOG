@@ -1,0 +1,15 @@
+Apa yang diubah?:
+- Membuat template import alumni
+- Revisi fitur import alumni
+- Menambahkan mitra
+- Memperbaiki bug login admin dan alumni
+- Menambahkan kode jurusan pada menu jurusan
+- Menambahkan fitur delete alumni, jurusan, dan mitra
+- Memperbaiki daftar alumni di halaman utama
+
+Berikut nya:
+- Revisi loker (admin)
+- Menambahkan lihat loker di dashboard alumni
+- Menampilkan loker di halaman utama
+- Memperbaiki informasi sekolah
+- Menampilkan visi dan misi di halaman depan

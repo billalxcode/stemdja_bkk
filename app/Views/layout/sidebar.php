@@ -65,19 +65,26 @@
             </ul>
         </li>
 
+        <li class="menu-item">
+            <a href="<?= base_url('admin/mitra') ?>" class="menu-link">
+                <i class="menu-icon tf-icons fa fa-handshake"></i>
+                <div data-i18n="Boxicons">Mitra / Perusahaan</div>
+            </a>
+        </li>
+
         <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Landing Page</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Informasi</span></li>
         <!-- Cards -->
         <li class="menu-item">
             <a href="<?= base_url('admin/school') ?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons fa fa-school"></i>
                 <div data-i18n="Basic">Informasi Sekolah</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="<?= base_url('admin/loker') ?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crown"></i>
+                <i class="menu-icon tf-icons fa fa-briefcase"></i>
                 <div data-i18n="Boxicons">Informasi Lowongan</div>
             </a>
         </li>
