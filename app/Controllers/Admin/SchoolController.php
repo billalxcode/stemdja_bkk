@@ -13,7 +13,7 @@ class SchoolController extends BaseController
     function __construct()
     {
         $this->session = Services::session();
-        $this->schoolModel = new \App\models\SchoolModel();
+        $this->schoolModel = new \App\Models\SchoolModel();
     }
 
     public function index()

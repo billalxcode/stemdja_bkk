@@ -63,6 +63,7 @@
     </div>
     <!-- / Layout wrapper -->
 
+    <?= $this->include("layout/partials/demo"); ?>
     <script>
         let BASE_URL = '<?= base_url() ?>'
     </script>
@@ -75,6 +76,7 @@
     <script src="<?= base_url() ?>/assets/vendor/libs/fontawesome/js/all.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/main.js"></script>
     <?= $this->renderSection('script'); ?>
+    <?= $this->renderSection('scriptDemo'); ?>
 </body>
 
 </html>
