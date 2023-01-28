@@ -22,8 +22,9 @@ class LowonganModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'title', 'corporate_name', 'corporate_contact', 'expired_date', 'pendidikan',
-        'tipe_pekerjaan', 'lokasi', 'range_gaji', 'deskripsi'
+        'title', 'expired_date', 'pendidikan',
+        'tipe_pekerjaan', 'province_code', 'cities_code',
+        'range_gaji', 'mitra_id', 'deskripsi'
     ];
 
     // Dates
@@ -50,25 +51,18 @@ class LowonganModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function create_data($title, $corporate_name, $corporate_contact, $expired_date, $pendidikan, $tipe_pekerjaan, $provinsi, $kota, $deskripsi) {
-        return [
-            'title'             => $title,
-            'corporate_name'    => $corporate_name,
-            'corporate_contact' => $corporate_contact,
-            'expired_date'      => $expired_date,
-            'pendidikan'        => $pendidikan,
-            'tipe_pekerjaan'    => $tipe_pekerjaan,
-            'provinsi'          => $provinsi,
-            'kota'              => $kota,
-            'range_gaji'        => null,
-            'deskripsi'         => htmlspecialchars($deskripsi)
-        ];
-    }
-
     public function get_all_data() {
-        $data = $this->select('id,title,corporate_name,corporate_contact,expired_date,deskripsi,created_at')->findAll();
+        $mitraModel = new \App\Models\MitraModel();
+        $data = $this->select('id,title,mitra_id,tipe_pekerjaan,expired_date,deskripsi,created_at')->findAll();
+        $data_real = [];
+        foreach ($data as $row) {
+            $mitraData = $mitraModel->select('name,address,site')->where('id', $row['mitra_id'])->first();
+            $row['mitra'] = $mitraData;
 
-        return $data;
+            $data_real[] = $row;
+        }
+
+        return $data_real;
     }
 
     public function trashData($data_id, $paksa) {
@@ -76,6 +70,7 @@ class LowonganModel extends Model
     }
 
     public function find_loker($search) {
+        $mitraModel = new \App\Models\MitraModel();
         if ($search) {
             $lokerData = $this->like('title', $search)->orLike('deskripsi', $search)->findAll();
         } else {
@@ -98,13 +93,44 @@ class LowonganModel extends Model
             $qrcode->setErrorCorrectionLevel(new ErrorCorrectionLevelLow());
             
             $result = $writer->write($qrcode, null, $label);
-            
-            // $qr_uri = $qrcode->uri
+            $mitraData = $mitraModel->select('name,address,site')->where('id', $loker['mitra_id'])->first();
+            $loker['mitra'] = $mitraData;
             $loker['loker_uri'] = base_url('alumni/loker/' . $loker['id']);
             $loker['loker_qr_uri'] = $result->getDataUri();
             array_push($lokerData_real, $loker);
         }
 
         return $lokerData_real;
+    }
+
+    public function get_loker_detail($loker_id) {
+        $mitraModel = new \App\Models\MitraModel();
+
+        $lokerData = $this->where('id', $loker_id)->first();
+        if (!$lokerData) {
+            return false;
+        }
+
+        $writer = new PngWriter();
+        $label = Label::create('Scan for apply');
+        $label->setTextColor(new Color(125, 122, 141));
+
+        // Generate qrcode
+        $qrcode = QrCode::create(base_url('alumni/loker/' . $loker_id));
+        $qrcode->setEncoding(new Encoding('UTF-8'));
+        $qrcode->setSize(300);
+        $qrcode->setMargin(5);
+        $qrcode->setRoundBlockSizeMode(new RoundBlockSizeModeMargin);
+        $qrcode->setForegroundColor(new Color(0,0,0));
+        $qrcode->setBackgroundColor(new Color(255, 255, 255, 0));
+        $qrcode->setErrorCorrectionLevel(new ErrorCorrectionLevelLow());
+
+        $result = $writer->write($qrcode, null, $label);
+        $mitraData = $mitraModel->select('name,address,site')->where('id', $lokerData['mitra_id'])->first();
+        $lokerData['mitra'] = $mitraData;
+        $lokerData['loker_uri'] = base_url('alumni/loker/' . $loker_id);
+        $lokerData['loker_qr_uri'] = $result->getDataUri();
+        
+        return $lokerData;
     }
 }

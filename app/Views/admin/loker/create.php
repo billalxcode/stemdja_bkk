@@ -21,12 +21,20 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-6">
-                                <label for="corporate_name">Nama Perusahaan</label>
-                                <input type="text" name="corporate_name" id="corporate_name" class="form-control" placeholder="Nama Perusahaan">
+                                <label for="mitra">Nama Perusahaan</label>
+                                <select name="mitra" id="mitra" class="form-select" aria-placeholder="Pilih Provinsi">
+                                    <?php if (isset($mitraData) && count($mitraData) == 0): ?>
+                                        <option value="" selected>Data Mitra kosong</option>
+                                    <?php else: ?>
+                                        <?php foreach ($mitraData as $mitra): ?>
+                                            <option value="<?= $mitra['id'] ?>"><?= $mitra['name'] ?></option>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
+                                </select>
                             </div>
                             <div class="col-6">
-                                <label for="corporate_contact">Kontak Perusahaan</label>
-                                <input type="text" name="corporate_contact" id="corporate_contact" class="form-control" placeholder="Kontak Perusahaan">
+                                <label for="range_gaji">Gaji/Upah</label>
+                                <input type="number" name="range_gaji" id="range_gaji" class="form-control" value="100000">
                             </div>
                         </div>
                         <div class="row mb-3">

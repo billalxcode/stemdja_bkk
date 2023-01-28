@@ -69,6 +69,7 @@ $routes->group('/alumni', ['filter' => 'alumnifilter'], function (RouteCollectio
 
     $routes->group('loker', function (RouteCollection $routes) {
         $routes->get('', 'Alumni\AlumniController::lokerPage');
+        $routes->get('(:num)', 'Alumni\AlumniController::lokerDetailPage/$1');
     });
 });
 
@@ -118,6 +119,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
 
     $routes->group('mitra', function (RouteCollection $routes) {
         $routes->get('', 'Admin\MitraController::index');
+        $routes->get('delete', 'Admin\MitraController::delete');
         $routes->post("save", 'Admin\MitraController::save');
     });
 });

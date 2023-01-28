@@ -119,4 +119,16 @@ class AlumniController extends BaseController
         $this->context['search'] = $search;
         return $this->render('alumni/loker/page');
     }
+
+    public function lokerDetailPage($loker_id) {
+        $lokerData = $this->lokerModel->get_loker_detail($loker_id);
+
+        if ($lokerData) {
+            $this->context['lokerData'] = $lokerData;
+            return $this->render('alumni/loker/detail');
+        } else {
+            $this->session->setFlashdata('error', 'Maaf sepertinya data loker yang anda cari tidak ditemukan');
+            return redirect()->back();
+        }
+    }
 }

@@ -59,7 +59,7 @@ use CodeIgniter\I18n\Time;
                                                     <span class="fw-bold">Lokasi</span>: Jakarta Barat, Jakarta
                                                 </li>
                                                 <li>
-                                                    <span class="fw-bold">Perusahaan</span>: <?= $loker['corporate_name'] ?>
+                                                    <span class="fw-bold">Perusahaan</span>: <?= $loker['mitra']['name'] ?>
                                                 </li>
                                             </ul>
                                         </div>
@@ -76,9 +76,6 @@ use CodeIgniter\I18n\Time;
                                     <a href="<?= base_url('/alumni/loker/' . $loker['id']) ?>" class="btn btn-secondary float-end mx-1">
                                         Lihat
                                     </a>
-                                    <!-- <a href="https://wa.me/<?= $loker['corporate_contact'] ?>" class="btn btn-danger btn-sm float-end mx-1">
-                                        Lamar
-                                    </a> -->
                                 </div>
                             </div>
                         </div>

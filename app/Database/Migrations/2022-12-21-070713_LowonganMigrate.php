@@ -20,14 +20,6 @@ class LowonganMigrate extends Migration
                 'constraint' => 255,
                 'null' => false
             ],
-            'corporate_name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255
-            ],
-            'corporate_contact' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255
-            ],
             'expired_date' => [
                 'type' => 'DATE'
             ],
@@ -49,6 +41,11 @@ class LowonganMigrate extends Migration
             'range_gaji' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true
+            ],
+            'mitra_id' => [
+                'type' => 'INT',
+                'constraint' => 5,
                 'null' => true
             ],
             'deskripsi' => [

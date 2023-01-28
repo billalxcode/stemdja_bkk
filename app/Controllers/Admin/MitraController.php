@@ -39,12 +39,6 @@ class MitraController extends BaseController
                     'errors' => [
                         'required' => 'Data alamat wajib diisi'
                     ]
-                    ],
-                    'site' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => 'Data website wajib diisi'
-                        ]
                     ]
         ];
 
@@ -67,5 +61,19 @@ class MitraController extends BaseController
             }
             return redirect()->back();
         }
+    }
+
+    public function delete() {
+        $mitra_id = $this->request->getGet('id');
+
+        $mitraData = $this->mitraModel->select('id')->where('id', $mitra_id)->first();
+        if ($mitraData) {
+            $this->mitraModel->delete($mitraData['id']);
+
+            $this->session->setFlashdata('success', 'Berhasil menghapus data');
+        } else {
+            $this->session->setFlashdata('error', 'Tidak dapat menghapus data');
+        }
+        return redirect()->back();
     }
 }

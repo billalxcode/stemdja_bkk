@@ -6,6 +6,8 @@ use App\Models\CitiesModel;
 use App\Models\ProvinceModel;
 use CodeIgniter\Database\Seeder;
 
+// ini_set('auto_detect_line_endings', true);
+
 class WilayahSeeder extends Seeder
 {
     public function run()

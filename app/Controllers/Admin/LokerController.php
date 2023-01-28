@@ -10,12 +10,14 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 class LokerController extends BaseController
 {
     protected $lokerModel;
+    protected $mitraModel;
     protected $session;
 
     function __construct()
     {
         $this->session = Services::session();
         $this->lokerModel = new \App\Models\LowonganModel();
+        $this->mitraModel = new \App\Models\MitraModel();
     }
 
     public function manage()
@@ -24,21 +26,34 @@ class LokerController extends BaseController
     }
 
     public function create() {
+        $mitraData = $this->mitraModel->select('id,name')->findAll();
+
+        $this->context['mitraData'] = $mitraData;
         return $this->render('admin/loker/create');
     }
 
     public function save() {
         $title              = $this->request->getPost('title');
-        $corporate_name     = $this->request->getPost('corporate_name');
-        $corporate_contact  = $this->request->getPost("corporate_contact");
+        $mitra_id           = $this->request->getPost("mitra");
         $pendidikan         = $this->request->getPost("pendidikan");
         $tipe_pekerjaan     = $this->request->getPost("tipe_pekerjaan");
         $provinsi           = $this->request->getPost("provinsi");
         $kota               = $this->request->getPost("kota");
         $expired_date       = $this->request->getPost("expired_date");
         $deskripsi          = $this->request->getPost('deskripsi');
+        $range_gaji         = $this->request->getPost("range_gaji");
 
-        $data = $this->lokerModel->create_data($title, $corporate_name, $corporate_contact, $expired_date, $pendidikan, $tipe_pekerjaan, $provinsi, $kota, $deskripsi);
+        $data = [
+            'title'         => $title,
+            'expired_date'  => $expired_date,
+            'pendidikan'    => $pendidikan,
+            'tipe_pekerjaan' => $tipe_pekerjaan,
+            'province_code' => $provinsi,
+            'cities_code'   => $kota,
+            'range_gaji'    => $range_gaji,
+            'mitra_id'      => $mitra_id,
+            'deskripsi'     => $deskripsi
+        ];
 
         $this->lokerModel->save($data);
 

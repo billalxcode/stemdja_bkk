@@ -29,8 +29,8 @@
                                 <tr>
                                     <th>Judul Loker</th>
                                     <th>Nama Perusahaan</th>
-                                    <th>Kontak Perusahaan</th>
                                     <th>Tanggal Akhir</th>
+                                    <th>Tipe</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -107,13 +107,19 @@
                     'data': 'title'
                 },
                 {
-                    'data': 'corporate_name'
-                },
-                {
-                    'data': 'corporate_contact'
+                    'data': 'mitra.name'
                 },
                 {
                     'data': 'expired_date'
+                },
+                {
+                    'data': 'tipe_pekerjaan',
+                    'render': function (data, type, row) {
+                        let badge = document.createElement("span")
+                        badge.className = 'badge bg-success text-white'
+                        badge.innerText = data
+                        return badge.outerHTML
+                    }
                 },
                 {
                     'data': 'id',
