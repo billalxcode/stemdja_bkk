@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  background: #fff;
+  background: rgb(231, 231, 231);
   color: #666666;
   font-family: "Open Sans", sans-serif;
 }
@@ -891,6 +891,7 @@ section {
 --------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
+  overflow-y: scroll;
 }
 
 .portfolio-details .portfolio-details-slider img {
@@ -1153,6 +1154,12 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+footer {
+  clear: both;
+  position: absolute;
+  width: 100%;
+
+}
 #footer {
   background: #343b40;
   padding: 30px 0;

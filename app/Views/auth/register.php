@@ -54,7 +54,7 @@
 						</div>
 						<!-- /Logo -->
 
-						<form id="formAuthentication" class="mb-3" action="<?= base_url('/verify') ?>" method="POST">
+						<form id="formAuthentication" class="mb-3" action="<?= base_url('/save') ?>" method="POST">
 							<?= csrf_field() ?>
 							<div class="row">
 								<div class="col-12">
@@ -62,23 +62,55 @@
 										<div class="alert alert-danger">
 											<?= session()->getFlashdata('error') ?>
 										</div>
-									<?php elseif (session()->getFlashdata('success')): ?>
-										<div class="alert alert-success">
-											<?= session()->getFlashdata('success') ?>
-										</div>
 									<?php endif ?>
 								</div>
 								<div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="nama_lengkap">Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" autofocus>
+                                    </div>
 									<div class="mb-3">
 										<label for="email" class="form-label">Username</label>
 										<input type="text" class="form-control" id="email" name="username" value="<?= old('username') ?>" placeholder="Enter your username" autofocus />
 									</div>
+                                    <div class="mb-3">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="jurusan">Jurusan</label>
+                                        <select name="jurusan" id="jurusan" class="form-select">
+                                            <?php if (empty($jurusans)): ?>
+                                                <option value="">Data masih kosong</option>
+                                            <?php else: ?>
+                                                <?php foreach ($jurusans as $jurusan): ?>
+                                                    <option value="<?= $jurusan['id'] ?>"><?= $jurusan['name'] ?> - <?= $jurusan['short'] ?></option>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
+                                            <option value="male">Laki-Laki</option>
+                                            <option value="female">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tahun_luluss">Tahun Lulus</label>
+                                        <select name="tahun_lulus" id="tahun_lulus" class="form-select">
+                                            <?php for ($i = 2000; $i < date('Y'); $i++): ?>
+                                                <?php if ($i == (date("Y") - 1)): ?>
+                                                    <option value="<?= $i ?>" selected><?= $i ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                                <?php endif ?>
+                                            <?php endfor ?>
+                                        </select>
+                                    </div>
 									<div class="mb-3 form-password-toggle">
 										<div class="d-flex justify-content-between">
 											<label class="form-label" for="password">Password</label>
-											<a href="<?= base_url('/resets?type=password') ?>">
-												<small>Forgot Password?</small>
-											</a>
 										</div>
 										<div class="input-group input-group-merge">
 											<input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
@@ -86,7 +118,7 @@
 										</div>
 									</div>
 									<div class="mb-3">
-										<button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+										<button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
 									</div>
 								</div>
 							</div>

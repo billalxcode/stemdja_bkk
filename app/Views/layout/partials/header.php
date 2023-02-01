@@ -18,7 +18,7 @@
 					<li class="dropdown"><a href="#"><span>Alumni</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="<?= base_url('cari') ?>">Cari Alumni</a></li>
-							<li><a href="#">Daftar Alumni</a></li>
+							<li><a href="<?= base_url('register') ?>">Daftar Alumni</a></li>
 						</ul>
 					</li>
 					<li><a class="nav-link scrollto" href="<?= base_url('login') ?>">Login</a></li>

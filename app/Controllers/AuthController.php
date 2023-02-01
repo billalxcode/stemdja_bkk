@@ -3,17 +3,23 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AlumniModel;
+use App\Models\JurusanModel;
 use App\Models\UsersModel;
 use Config\Services;
 
 class AuthController extends BaseController
 {
     protected $userModel;
+    protected $jurusanModel;
+    protected $alumniModel;
     protected $session;
 
     function __construct()
     {
         $this->userModel = new UsersModel();
+        $this->jurusanModel = new JurusanModel();
+        $this->alumniModel = new AlumniModel();
         $this->session = Services::session();
     }
 
@@ -22,15 +28,82 @@ class AuthController extends BaseController
         return $this->render('auth/login');
     }
 
+    public function register() {
+        $jurusandata = $this->jurusanModel->select('id,name,short')->findAll();
+
+        $this->context['jurusans'] = $jurusandata;
+        return $this->render('auth/register');
+    }
+
+    public function save() {
+        $rules = [
+            'email' => [
+                'rules' => 'valid_email|is_unique[users.email]',
+                'errors' => [
+                    'valid_email' => 'Maaf email yang ana masukan tidak valid',
+                    'is_unique' => 'Maaf email sudah ada, Mohon gunakan email yang lain'
+                ]
+            ],
+            'username' => [
+                'rules' => 'is_unique[users.username]',
+                'errors' => [
+                    'is_unique' => 'Maaf username sudah digunakan. Mohon gunakan username yang lain.'
+                ]
+            ]
+        ];
+
+        if ($this->validate($rules)) {
+            $nama_lengkap = $this->request->getPost('nama_lengkap');
+            $username = $this->request->getPost('username');
+            $email = $this->request->getPost("email");
+            $jurusan = $this->request->getPost("jurusan");
+            $jenis_kelamin = $this->request->getPost("jenis_kelamin");
+            $tahun_lulus = $this->request->getPost('tahun_lulus');
+            $password = $this->request->getPost("password");
+
+            $dataAccount = [
+                'email' => $email,
+                'name' => $nama_lengkap,
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_BCRYPT),
+                'role' => 'alumni'
+            ];
+
+            $this->userModel->save($dataAccount);
+
+            $getDataAccount = $this->userModel->select('id')->where('email', $email)->first();
+            
+            $dataAlumni = [
+                'user_id' => $getDataAccount['id'],
+                'jenis_kelamin' => $jenis_kelamin,
+                'tahun_lulus' => $tahun_lulus,
+                'jurusan_id' => $jurusan,
+            ];
+
+            $this->alumniModel->save($dataAlumni);
+
+            $this->session->setFlashdata('success', 'Daftar telah berhasil, silahkan login');
+            return redirect()->to('login');
+        } else {
+            $error = $this->validator->getErrors();
+            foreach ($error as $key => $val) {
+                $this->session->setFlashdata('error', $val);
+                break;
+            }
+            return redirect()->back()->withInput();
+        }
+        
+    }
+
     public function verify() {
         helper('form');
 
         $username = $this->request->getPost('username');
-        $passowrd = $this->request->getPost("password");
+        $password = $this->request->getPost("password");
 
         $userdata = $this->userModel->where('username', $username)->first();
         if ($userdata) {
-            if (password_verify($passowrd, $userdata['password'])) {
+            if (password_verify($password, $userdata['password'])) {
                 if ($userdata['role'] == 'alumni') {
                     if ($userdata['status'] == 'verifed') {
                         $token = $this->userModel->create_token();

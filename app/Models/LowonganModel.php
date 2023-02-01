@@ -69,7 +69,7 @@ class LowonganModel extends Model
         return $this->delete($data_id, ($paksa == 'ya' ? true : false));
     }
 
-    public function find_loker($search) {
+    public function find_loker($search, $guest = false) {
         $mitraModel = new \App\Models\MitraModel();
         if ($search) {
             $lokerData = $this->like('title', $search)->orLike('deskripsi', $search)->findAll();
@@ -95,7 +95,7 @@ class LowonganModel extends Model
             $result = $writer->write($qrcode, null, $label);
             $mitraData = $mitraModel->select('name,address,site')->where('id', $loker['mitra_id'])->first();
             $loker['mitra'] = $mitraData;
-            $loker['loker_uri'] = base_url('alumni/loker/' . $loker['id']);
+            $loker['loker_uri'] = base_url(($guest == true ? 'loker/' : 'alumni/loker/') . $loker['id']);
             $loker['loker_qr_uri'] = $result->getDataUri();
             array_push($lokerData_real, $loker);
         }

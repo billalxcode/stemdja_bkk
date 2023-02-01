@@ -40,8 +40,11 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'AuthController::index');
 $routes->get('/logout', 'AuthController::logout');
+$routes->get('/register', 'AuthController::register');
+$routes->post("/save", 'AuthController::save');
 $routes->post('/verify', 'AuthController::verify');
 $routes->get('/cari', 'Home::alumniIndex');
+$routes->get('/loker', 'LokerController::index');
 
 $routes->group('/api', function (RouteCollection $routes) {
     $routes->group('wilayah', function (RouteCollection $routes) {
