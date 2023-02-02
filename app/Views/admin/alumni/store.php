@@ -79,7 +79,9 @@
     })
 
     $(document).on("click", "#save", function () {
-        $("#triggerForm").submit()
+        $("#spinner").show(0, function () {
+            $("#triggerForm").submit()
+        })
     })
 </script>
 <?= $this->endSection(); ?>

@@ -18,6 +18,9 @@
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPrint" disabled>
                         <i class="fas fa-print"></i> Cetak
                     </button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalReset">
+                        <i class="fa fa-trash"></i> Reset
+                    </button>
                 </div>
             </div>
         </div>
@@ -115,6 +118,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalReset" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalResetLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span class="badge bg-warning fw-bold text-white">PERINGATAN: </span> Aksi ini akan menghapus semua data yang ada di database kecuali primary user (admin). Mohon konfirmasi bahwa saya menghapus ini dengan sadar.
+                <form action="<?= base_url('admin/alumni/reset') ?>" method="post" id="triggerFormReset">
+                    <?= csrf_field() ?>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" id="sendFormReset"">Ya</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="modalUpdate" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -182,6 +208,12 @@
     $(document).on("click", "#sendForm", function() {
         let body = $(this).parent().parent()
         let form = body.find('form#triggerForm')
+        form.submit()
+    })
+
+    $(document).on("click", "#sendFormReset", function () {
+        let body = $(this).parent().parent()
+        let form = body.find("form#triggerFormReset")
         form.submit()
     })
 

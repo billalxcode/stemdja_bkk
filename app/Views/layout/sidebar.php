@@ -25,7 +25,7 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons fa fa-user"></i>
                 <div data-i18n="Data Alumni">Data Alumni</div>
             </a>
             <ul class="menu-sub">
@@ -48,7 +48,7 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <i class="menu-icon tf-icons fa fa-users"></i>
                 <div data-i18n="Data Jurusan">Data Jurusan</div>
             </a>
             <ul class="menu-sub">

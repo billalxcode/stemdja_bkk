@@ -95,6 +95,7 @@ $routes->group('/admin', ['filter' => 'adminfilter'], function (RouteCollection 
         $routes->post("store", 'Admin\AlumniController::process_store');
         $routes->post("download", "Admin\AlumniController::download");
         $routes->post("update", "Admin\AlumniController::update");
+        $routes->post("reset", "Admin\AlumniController::reset");
     });
 
     $routes->group('jurusan', function (RouteCollection $routes) {

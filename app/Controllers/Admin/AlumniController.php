@@ -6,8 +6,9 @@ use App\Controllers\BaseController;
 use App\Models\AlumniModel;
 use App\Models\JurusanModel;
 use App\Models\UsersModel;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 use Config\Services;
-use Exception;
+use Error;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -194,7 +195,7 @@ class AlumniController extends BaseController
 
                         $this->alumniModel->save($dataAlumni);
                         $success += 1;
-                    } catch (Exception $e) {
+                    } catch (DatabaseException $e) {
                         $error += 1;
                     }
                     // try {
@@ -358,5 +359,17 @@ class AlumniController extends BaseController
                 return redirect()->back();
             }
         }
+    }
+
+    public function reset() {
+        $dataUsers = $this->userModel->select('id')->where('role', 'alumni')->findAll();
+        foreach ($dataUsers as $data) {
+            $dataAlumni = $this->alumniModel->select('id')->where('user_id', $data['id'])->first();
+            $this->alumniModel->delete($dataAlumni['id']);
+            $this->userModel->delete($data['id']);
+        }
+
+        $this->session->setFlashdata('success', 'Data berhasil di reset!');
+        return redirect()->back();
     }
 }

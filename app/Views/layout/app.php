@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/demo.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/spinner.css" />
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/apex-charts/apex-charts.css" />
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/fontawesome/css/all.min.css">
@@ -25,6 +26,9 @@
 </head>
 
 <body>
+    <div class="app-loader" id="spinner">
+        <div class="spinner"></div>
+    </div>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">

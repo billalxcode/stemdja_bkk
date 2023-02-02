@@ -18,7 +18,7 @@
 <?= $this->section('scriptDemo'); ?>
 <script>
     $(window).on('load', function () {
-        $("#demoModal").modal("show")
+        $("#demoModal").modal("hide")
     })
 </script>
 <?= $this->endSection(); ?>
