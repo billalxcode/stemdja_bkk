@@ -45,7 +45,7 @@ class AlumniModel extends Model
 
     public function getAllData(string $type = "private") {
         $token = session()->get('token');
-
+        
         $userModel = new \App\Models\UsersModel();
         $jurusanModel = new \App\Models\JurusanModel();
 
