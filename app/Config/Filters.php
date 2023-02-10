@@ -4,7 +4,6 @@ namespace Config;
 
 use App\Filters\AdminFilter;
 use App\Filters\AlumniFilter;
-use App\Filters\Cors;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -22,7 +21,7 @@ class Filters extends BaseConfig
      */
     public $aliases = [
         'csrf'          => CSRF::class,
-        'cors'          => Cors::class,
+        'cors'          => \Fluent\Cors\Filters\CorsFilter::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
@@ -75,5 +74,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        
+    ];
 }
