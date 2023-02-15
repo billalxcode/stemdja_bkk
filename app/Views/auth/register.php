@@ -49,7 +49,7 @@
 						<!-- Logo -->
 						<div class="app-brand justify-content-center">
 							<a href="<?= base_url() ?>" class="app-brand-link gap-2">
-								<span class="app-brand-text demo text-body fw-bolder text-uppercase">Bursa Kerja Khusus</span>
+								<span class="app-brand-text demo text-body fw-bolder text-uppercase">Pendataan Alumni</span>
 							</a>
 						</div>
 						<!-- /Logo -->
@@ -108,6 +108,19 @@
                                             <?php endfor ?>
                                         </select>
                                     </div>
+									<div class="mb-3">
+                                        <label for="status">Status</label>
+                                        <select name="status" id="status" class="form-select">
+											<option value="belum_bekerja">Belum Bekerja</option>
+											<option value="bekerja">Bekerja</option>
+											<option value="kuliah">Kuliah</option>
+											<option value="berwirausaha">Berwirausaha</option>
+										</select>
+									</div>
+									<div class="mb-3 d-none" id="tempat_kerja">
+										<label for="tempat_kerja">Tempat kerja/kuliah</label>
+										<input type="text" name="tempat_kerja" id="tempat_kerja" class="form-control" placeholder="">
+                                    </div>
 									<div class="mb-3 form-password-toggle">
 										<div class="d-flex justify-content-between">
 											<label class="form-label" for="password">Password</label>
@@ -150,6 +163,33 @@
 
 	<!-- Main JS -->
 	<script src="<?= base_url() ?>/assets/js/main.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('#status').on('change', function (event) {
+				let data = $(this).val()
+				let tempat_kerja = $('#tempat_kerja')
+				if (data != "belum_bekerja") {
+					tempat_kerja.removeClass('d-none')
+					let label = tempat_kerja.find('label')
+					let input = tempat_kerja.find('input')
+
+					if (data == 'berwirausaha') {
+						label.text('Nama Wirausaha')
+						input.attr('placeholder', 'Nama Wirausaha')
+					} else if (data == 'kuliah') {
+						label.text('Nama Universitas')
+						input.attr('placeholder', 'Nama Universitas')
+					} else if (data == 'bekerja') {
+						label.text('Nama Perusahaan')
+						input.attr('placeholder', 'Nama Perusahaan')
+					}
+				} else {
+					tempat_kerja.addClass('d-none')
+				}
+			})
+		})
+	</script>
 
 </body>
 

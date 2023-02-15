@@ -47,12 +47,45 @@
 				<div class="row about-container">
 
 					<div class="col-lg-6 content order-lg-1 order-2">
-						<h2 class="title">Tentang SMKN 1 Maja</h2>
+						<h2 class="title">Visi Misi SMKN 1 Maja</h2>
 						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae accusantium debitis ipsa harum sequi error ratione quos eligendi voluptate delectus rem quae, et assumenda minus quaerat tenetur, placeat maxime nostrum!
+							Terwujudnya Lulusan SMK Negeri 1 Maja Yang Cerdas, Berakhlak Mulia, Berdaya Saing Global, Dan Peduli Lingkungan
+
+						<ol>
+							<li>
+								Mengembangkan kurikulum sekolah secara berkelanjutan.
+							</li>
+							<li>
+								Mengembangkan proses pembelajaran dan pengembangan diri secara profesional.
+							</li>
+							<li>
+								Mengembangkan sistem penilaian pendidikan berbasis kelas dan kompetensi.
+							</li>
+							<li>
+								Meningkatkan kinerja pendidik dan tenaga kependidikan yang profesional.
+							</li>
+							<li>
+								Mengembangkan sarana dan prasarana pendidikan.
+							</li>
+							<li>
+								Mengembangkan kemitraan sekolah dengan berbagai pihak baik kedalam maupun keluar lembaga
+							</li>
+							<li>
+								Menerapkan manajemen berbasis sekolah dan sistem manajemen mutu ISO 9001:2008
+							</li>
+							<li>
+								Membangun jiwa peserta didik yang kreatif, inovatif, sportif, dan wirausaha
+							</li>
+							<li>
+								Meningkatkan pegawasan dan evaluasi program pendidikan
+							</li>
+							<li>
+								Mengembangkan sekolah berbudaya lingkungan
+							</li>
+						</ol>
 						</p>
 
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+						<!-- <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
 							<div class="icon"><i class="bi bi-map"></i></div>
 							<h4 class="title"><a href="">Lokasi</a></h4>
 							<p class="description"><a href="https://goo.gl/maps/nSwbZ4ZpG7j6eVJD9"></a> 4862+3J2, Maja Sel., Kec. Maja, Kabupaten Majalengka, Jawa Barat</p>
@@ -68,12 +101,12 @@
 							<div class="icon"><i class="bi bi-globe"></i></div>
 							<h4 class="title"><a href="">Website</a></h4>
 							<p class="description">https://smkn1maja.sch.id</p>
-						</div>
+						</div> -->
 
 					</div>
 
 					<div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/1vwf0beqPZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/1vwf0beqPZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 
 					<!-- <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div> -->
@@ -92,7 +125,7 @@
 				<div class="row counters">
 
 					<div class="col-lg-3 col-6 text-center">
-						<span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="<?= $totalMitra ?>" data-purecounter-duration="1" class="purecounter"></span>
 						<p>Mitra</p>
 					</div>
 
@@ -122,7 +155,103 @@
 					<h3 class="section-title">Layanan</h3>
 					<p class="section-description">Berikut layanan yang kami berikan</p>
 				</div>
-				<div class="row">
+				<form id="formAuthentication" class="mb-3" action="<?= base_url('/save') ?>" method="POST">
+					<?= csrf_field() ?>
+					<div class="row">
+						<div class="col-12">
+							<?php if (session()->getFlashdata('error')) : ?>
+								<div class="alert alert-danger">
+									<?= session()->getFlashdata('error') ?>
+								</div>
+							<?php endif ?>
+						</div>
+						<div class="col-12">
+							<div class="row">
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="nama_lengkap">Nama Lengkap</label>
+									<input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" autofocus>
+								</div>
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="email" class="form-label">Username</label>
+									<input type="text" class="form-control" id="email" name="username" value="<?= old('username') ?>" placeholder="Enter your username" autofocus />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="email">Email</label>
+									<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+								</div>
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="jurusan">Jurusan</label>
+									<select name="jurusan" id="jurusan" class="form-select">
+										<?php if (empty($jurusans)) : ?>
+											<option value="">Data masih kosong</option>
+										<?php else : ?>
+											<?php foreach ($jurusans as $jurusan) : ?>
+												<option value="<?= $jurusan['id'] ?>"><?= $jurusan['name'] ?> - <?= $jurusan['short'] ?></option>
+											<?php endforeach ?>
+										<?php endif ?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="jenis_kelamin">Jenis Kelamin</label>
+									<select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
+										<option value="male">Laki-Laki</option>
+										<option value="female">Perempuan</option>
+									</select>
+								</div>
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="tahun_lulus">Tahun Lulus</label>
+									<select name="tahun_lulus" id="tahun_lulus" class="form-select">
+										<?php for ($i = 2000; $i < date('Y'); $i++) : ?>
+											<?php if ($i == (date("Y") - 1)) : ?>
+												<option value="<?= $i ?>" selected><?= $i ?></option>
+											<?php else : ?>
+												<option value="<?= $i ?>"><?= $i ?></option>
+											<?php endif ?>
+										<?php endfor ?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mb-3 col-sm-12">
+									<label for="status">Status</label>
+									<select name="status" id="status" class="form-select">
+										<option value="belum_bekerja">Belum Bekerja</option>
+										<option value="bekerja">Bekerja</option>
+										<option value="kuliah">Kuliah</option>
+										<option value="berwirausaha">Berwirausaha</option>
+									</select>
+								</div>
+								<div class="col-6 mb-3">
+									<div class="d-flex justify-content-between">
+										<label class="form-label" for="password">Password</label>
+									</div>
+									<div class="input-group input-group-merge">
+										<input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+										<span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 mb-3 col-sm-12 d-none" id="tempat_kerja">
+									<label for="tempat_kerja">Tempat kerja/kuliah</label>
+									<input type="text" name="tempat_kerja" id="tempat_kerja" class="form-control" placeholder="">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</form>
+				<!-- <div class="row">
 					<div class="col-lg-4 col-md-6" data-aos="zoom-in">
 						<div class="box">
 							<div class="icon"><a href=""><i class="bi bi-briefcase"></i></a></div>
@@ -144,7 +273,7 @@
 							<p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 		</section><!-- End Services Section -->
@@ -154,7 +283,7 @@
 			<div class="container">
 				<div class="section-header">
 					<h3 class="section-title">PETA</h3>
-					<p class="section-description">Katakan peta, katakan peta, peta.................</p>
+					<p class="section-description">Peta Lokasi Sekolah Menengah Kejuruan Negeri 1 Maja, Majalengka</p>
 				</div>
 			</div>
 
@@ -169,6 +298,7 @@
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
+	<script src="<?= base_url() ?>/assets/vendor/libs/jquery/jquery.js"></script>
 	<script src="<?= base_url('theme/regna') ?>/vendor/purecounter/purecounter_vanilla.js"></script>
 	<script src="<?= base_url('theme/regna') ?>/vendor/aos/aos.js"></script>
 	<script src="<?= base_url('theme/regna') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -179,6 +309,33 @@
 
 	<!-- Template Main JS File -->
 	<script src="<?= base_url('theme/regna') ?>/js/main.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('#status').on('change', function (event) {
+				let data = $(this).val()
+				let tempat_kerja = $('#tempat_kerja')
+				if (data != "belum_bekerja") {
+					tempat_kerja.removeClass('d-none')
+					let label = tempat_kerja.find('label')
+					let input = tempat_kerja.find('input')
+
+					if (data == 'berwirausaha') {
+						label.text('Nama Wirausaha')
+						input.attr('placeholder', 'Nama Wirausaha')
+					} else if (data == 'kuliah') {
+						label.text('Nama Universitas')
+						input.attr('placeholder', 'Nama Universitas')
+					} else if (data == 'bekerja') {
+						label.text('Nama Perusahaan')
+						input.attr('placeholder', 'Nama Perusahaan')
+					}
+				} else {
+					tempat_kerja.addClass('d-none')
+				}
+			})
+		})
+	</script>
 
 </body>
 

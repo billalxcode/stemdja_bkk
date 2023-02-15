@@ -40,7 +40,7 @@ class AuthController extends BaseController
             'email' => [
                 'rules' => 'valid_email|is_unique[users.email]',
                 'errors' => [
-                    'valid_email' => 'Maaf email yang ana masukan tidak valid',
+                    'valid_email' => 'Maaf email yang anda masukan tidak valid',
                     'is_unique' => 'Maaf email sudah ada, Mohon gunakan email yang lain'
                 ]
             ],
@@ -60,6 +60,8 @@ class AuthController extends BaseController
             $jenis_kelamin = $this->request->getPost("jenis_kelamin");
             $tahun_lulus = $this->request->getPost('tahun_lulus');
             $password = $this->request->getPost("password");
+            $status = $this->request->getPost('status');
+            $tempat_kerja = $this->request->getPost('tempat_kerja');
 
             $dataAccount = [
                 'email' => $email,
@@ -78,6 +80,8 @@ class AuthController extends BaseController
                 'jenis_kelamin' => $jenis_kelamin,
                 'tahun_lulus' => $tahun_lulus,
                 'jurusan_id' => $jurusan,
+                'status'    => $status,
+                'tempat_kerja'  => $tempat_kerja
             ];
 
             $this->alumniModel->save($dataAlumni);
