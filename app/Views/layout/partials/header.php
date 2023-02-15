@@ -13,7 +13,7 @@
 				<ul>
 					<li><a class="nav-link scrollto active" href="<?= base_url() ?>">Home</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>/#about">Tentang</a></li>
-					<li><a class="nav-link scrollto" href="<?= base_url() ?>/#services">Layanan</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>/#services">Daftar</a></li>
 					<li><a class="nav-link scrollto " href="<?= base_url('loker') ?>">Pekerjaan</a></li>
 					<li class="dropdown"><a href="#"><span>Alumni</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>

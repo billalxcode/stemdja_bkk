@@ -152,8 +152,8 @@
 		<section id="services">
 			<div class="container" data-aos="fade-up">
 				<div class="section-header">
-					<h3 class="section-title">Layanan</h3>
-					<p class="section-description">Berikut layanan yang kami berikan</p>
+					<h3 class="section-title">Daftar Sekarang</h3>
+					<p class="section-description">Berikut form pendaftaran</p>
 				</div>
 				<form id="formAuthentication" class="mb-3" action="<?= base_url('/save') ?>" method="POST">
 					<?= csrf_field() ?>
