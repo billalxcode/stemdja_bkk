@@ -167,21 +167,21 @@
 						</div>
 						<div class="col-12">
 							<div class="row">
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="nama_lengkap">Nama Lengkap</label>
 									<input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" autofocus>
 								</div>
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="email" class="form-label">Username</label>
 									<input type="text" class="form-control" id="email" name="username" value="<?= old('username') ?>" placeholder="Enter your username" autofocus />
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="email">Email</label>
 									<input type="text" name="email" id="email" class="form-control" placeholder="Email">
 								</div>
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="jurusan">Jurusan</label>
 									<select name="jurusan" id="jurusan" class="form-select">
 										<?php if (empty($jurusans)) : ?>
@@ -195,14 +195,14 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="jenis_kelamin">Jenis Kelamin</label>
 									<select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
 										<option value="male">Laki-Laki</option>
 										<option value="female">Perempuan</option>
 									</select>
 								</div>
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="tahun_lulus">Tahun Lulus</label>
 									<select name="tahun_lulus" id="tahun_lulus" class="form-select">
 										<?php for ($i = 2000; $i < date('Y'); $i++) : ?>
@@ -216,7 +216,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-6 mb-3 col-sm-12">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<label for="status">Status</label>
 									<select name="status" id="status" class="form-select">
 										<option value="belum_bekerja">Belum Bekerja</option>
@@ -225,7 +225,7 @@
 										<option value="berwirausaha">Berwirausaha</option>
 									</select>
 								</div>
-								<div class="col-6 mb-3">
+								<div class="col-12 mb-3 col-sm-12 col-lg-6">
 									<div class="d-flex justify-content-between">
 										<label class="form-label" for="password">Password</label>
 									</div>
