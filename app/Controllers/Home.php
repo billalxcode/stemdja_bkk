@@ -28,12 +28,13 @@ class Home extends BaseController
         $totalAlumni = $this->userModel->where('role', 'alumni')->findAll();
         $totalLoker = $this->lokerModel->findAll();
         $totalMitra = $this->mitraModel->findAll();
-        
-        $this->context['transparent'] = true;
-        $this->context['totalAlumni'] = (isset($totalAlumni) ? count($totalAlumni) : 0);
-        $this->context['totalLoker'] = (isset($totalLoker) ? count($totalLoker) : 0);
-        $this->context['totalJurusan'] = (isset($totalJurusan) ? count($totalJurusan) : 0);
-        $this->context['totalMitra'] = (isset($totalMitra) ? count($totalMitra) : 0);
+
+        $this->context['transparent']   = true;
+        $this->context['totalAlumni']   = (isset($totalAlumni) ? count($totalAlumni) : 0);
+        $this->context['totalLoker']    = (isset($totalLoker) ? count($totalLoker) : 0);
+        $this->context['totalJurusan']  = (isset($totalJurusan) ? count($totalJurusan) : 0);
+        $this->context['totalMitra']    = (isset($totalMitra) ? count($totalMitra) : 0);
+        $this->context['jurusans']      = $totalJurusan;
         return $this->render("home");
     }
 
