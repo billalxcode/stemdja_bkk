@@ -94,7 +94,7 @@
 						</form>
 
 						<p class="text-center">
-							<span>Copyright &copy; 2022 Billal Fauzan</span>
+							<span>Copyright &copy; 2022 MJ Product Majalengka</span>
 						</p>
 					</div>
 				</div>
