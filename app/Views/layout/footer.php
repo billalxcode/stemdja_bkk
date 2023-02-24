@@ -6,7 +6,7 @@
                 document.write(new Date().getFullYear());
             </script>
             , made with ❤️ by
-            <a href="https://github.com/billalxcode" target="_blank" class="footer-link fw-bolder">Billal Fauzan</a>
+            <a href="https://github.com/billalxcode" target="_blank" class="footer-link fw-bolder">MJ Product Majalengka</a>
         </div>
         <div>
             <a href="https://github.com/billalxcode" class="footer-link me-4" target="_blank">Github</a>
